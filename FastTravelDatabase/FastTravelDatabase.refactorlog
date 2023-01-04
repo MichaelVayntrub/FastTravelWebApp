@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="0266111e-4ff9-4600-95f8-cfa5c5626dc6" ChangeDateTime="01/04/2023 10:08:53">
+    <Property Name="ElementName" Value="[dbo].[Animals].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Animals]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="animalTypeID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3ac094a8-e155-46d1-9dbe-5242f3e0aa90" ChangeDateTime="01/04/2023 10:12:17">
+    <Property Name="ElementName" Value="[dbo].[Animals].[PTPrice]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Animals]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="maxWeight" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4b819dab-c35e-4d9e-83fb-dd03093284b0" ChangeDateTime="01/04/2023 11:23:38">
+    <Property Name="ElementName" Value="[dbo].[Animals].[animalTypeID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Animals]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="animaID" />
+  </Operation>
+</Operations>
