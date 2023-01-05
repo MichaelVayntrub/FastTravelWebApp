@@ -1,5 +1,6 @@
 ﻿using FastTravel.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using System.Diagnostics;
 
 namespace FastTravel.Controllers

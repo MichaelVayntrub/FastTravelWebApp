@@ -3,6 +3,7 @@ using FastTravel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations
 {
     [DbContext(typeof(FastTravelDbContext))]
-    partial class FastTravelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230105155143_addedPetTicket")]
+    partial class addedPetTicket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

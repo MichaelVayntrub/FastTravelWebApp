@@ -1,0 +1,45 @@
+﻿@model FastTravel.Models.Luggage
+
+@{
+    ViewData["Title"] = "CreateLuggage";
+}
+
+<h1>CreateLuggage</h1>
+
+<h4>Luggage</h4>
+<hr />
+<form method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateLuggage">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="luggageType" class="control-label"></label>
+                    <input asp-for="luggageType" class="form-control" />
+                    <span asp-validation-for="luggageType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="maxWeight" class="control-label"></label>
+                    <input asp-for="maxWeight" class="form-control" />
+                    <span asp-validation-for="maxWeight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="price" class="control-label"></label>
+                    <input asp-for="price" class="form-control" />
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
