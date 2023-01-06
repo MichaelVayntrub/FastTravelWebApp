@@ -1,21 +1,23 @@
 using FastTravel.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using FastTravel.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("FastTravelContextConnection");
 var FTDBconnectionString = builder.Configuration.GetConnectionString("FastTravelDatabaseConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<FastTravelContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<FastTravelDbContext>(options =>
     options.UseSqlServer(FTDBconnectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<FastTravelContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
