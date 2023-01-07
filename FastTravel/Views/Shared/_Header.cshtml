@@ -114,7 +114,7 @@
 {
     <script>
         var flag = false;
-        $("#DropdownMenu").click(function () {
+        $("#DropdownMenu").click(function (event) {
             if(!flag)
             {
                 $("#DropdownMenuItems").show();
@@ -125,6 +125,11 @@
                 $("#DropdownMenuItems").hide();
                 flag = false;
             }
+            event.stopPropagation();
+        });
+        $(document).click(function () {
+            $("#DropdownMenuItems").hide();
+            flag = false;
         });
     </script>
 }

@@ -1,0 +1,26 @@
+﻿
+<h1 id="a">Asdfg</h1>
+<button id="B">HERE</button>
+
+@using (Html.BeginScripts())
+{
+    var flag = true;
+
+    @if(flag)
+    {
+        <script>
+            $("#B").click(function () {
+                alert("true");
+            });
+        </script>
+        flag = false;
+    }
+    else{
+        <script>
+            $("#B").click(function () {
+                alert("false");
+            });
+        </script>
+        flag = true;
+    }
+}

@@ -16,13 +16,13 @@ namespace FastTravel.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<PetTicket> petTicketList = new List<PetTicket>();
-            return View(petTicketList);
-        }
-        [HttpPost]
-        public IActionResult Index(IEnumerable<PetTicket> petTicket)
-        {
-            return View(petTicket);
+            List<Package> packageList = new List<Package>();
+            packageList.Add(new Package());
+            packageList.Add(new Package());
+            packageList.Add(new Package());
+            packageList.Add(new Package());
+
+            return View(packageList);
         }
 
         public IActionResult Privacy()

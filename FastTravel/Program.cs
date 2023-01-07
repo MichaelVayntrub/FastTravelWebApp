@@ -18,6 +18,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<FastTravelContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
