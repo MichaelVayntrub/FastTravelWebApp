@@ -1,4 +1,9 @@
-﻿<header class="bg-slate-800 border border-slate-700 border-b-1 border-t-0 border-x-0 nav-header flex-none" data-controller="header"> <!-- navbar bg -->
+﻿@using FastTravel.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<header class="bg-slate-800 border border-slate-700 border-b-1 border-t-0 border-x-0 nav-header flex-none" data-controller="header"> <!-- navbar bg -->
   <div class="mx-auto max-w-full sm:px-4 md:px-6 lg:px-10 xl:px-20"> <!-- navbar first container -->
     <div class="relative flex h-20 justify-between"> <!-- navbar second container (item holder) -->
         <button class="group z-10 h-20 relative flex px-0 items-center transition-all hover:scale-105 active:scale-90"> <!-- logo holder -->
@@ -48,7 +53,7 @@
           >
             <div class="pl-1">
               <svg
-                  id= "user_burger"
+                  id= "MenuBurger"
                   viewBox="0 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
@@ -65,7 +70,7 @@
             </div>
             <div class="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-5">
               <svg
-                id="user-profile"
+                id="MenuProfile"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
@@ -93,12 +98,17 @@
             data-transition-leave-end="transform opacity-0 scale-95"
           >
             <div class="py-1" role="none">
-              <% if user_signed_in? %>
-                <%= link_to "Log Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" %>
-              <% else %>
-                <a href="#" data-header-target="userAuthLink" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-0">Sign Up</a>
-                <a href="#" data-header-target="userAuthLink" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-1">Log In</a>
-              <% end %>
+              @if (SignInManager.IsSignedIn(User))
+              {
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                  <button  type="submit" class="text-white w-full text-left block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold">Log Out</button>
+                </form>              
+              }
+              else
+              {
+                <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Login">Log In</a>
+              }
             </div>
             <div class="py-1" role="none">
               <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">About Us</a>
@@ -118,17 +128,26 @@
             if(!flag)
             {
                 $("#DropdownMenuItems").show();
+                $("#DropdownMenu").addClass("bg-mint border-mint drop-shadow-xl").removeClass("bg-slate-800 border-white drop-shadow-lg");
+                $("#MenuBurger").addClass("text-slate-800").removeClass("text-white");
+                $("#MenuProfile").addClass("text-slate-800").removeClass("text-white");
                 flag = true;
             }
             else
             {
                 $("#DropdownMenuItems").hide();
+                $("#DropdownMenu").addClass("bg-slate-800 border-white drop-shadow-lg").removeClass("bg-mint border-mint drop-shadow-xl");
+                $("#MenuBurger").addClass("text-white").removeClass("text-slate-800");
+                $("#MenuProfile").addClass("text-white").removeClass("text-slate-800");
                 flag = false;
             }
             event.stopPropagation();
         });
         $(document).click(function () {
             $("#DropdownMenuItems").hide();
+            $("#DropdownMenu").addClass("bg-slate-800 border-white drop-shadow-lg").removeClass("bg-mint border-mint drop-shadow-xl");
+            $("#MenuBurger").addClass("text-white").removeClass("text-slate-800");
+            $("#MenuProfile").addClass("text-white").removeClass("text-slate-800");
             flag = false;
         });
     </script>

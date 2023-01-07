@@ -5,7 +5,7 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+@*<h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -82,4 +82,94 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-}
+}*@
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet" />
+
+<div class="background-animate relative flex flex-1 items-center justify-center bg-gradient-to-tl from-slate-900 via-mint to-slate-900 py-12 px-4 sm:px-8 lg:px-8">
+  <div class="w-full items-center justify-center rounded-lg bg-slate-800 p-8 shadow-xl backdrop-blur sm:max-w-3xl">
+    <div>
+      <svg alt="FastTravel" class="mx-auto block h-12 w-auto text-mint transition-all hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="currentColor">
+        <path opacity="1.000000" stroke="none" d="M 84 55 C 75 62 65 69 54 76 C 48 79 41 80 41 70 C 41 51 41 41.8 41 26 C 41 16 48 17 54 20 C 65 27 75 34 84 41 C 90 46 90 50 84 55 Z" style="fill-rule: evenodd;"></path>
+        <path opacity="1.000000" stroke="none" d="M 35 48 C 35 54 35 56 35 65 C 35 71 27 74 23 76 C 17 79 10 80 10 70 C 10 55 10 41 10 26 C 10 16 17 17 23 20 C 27 22 35 25 35 31 C 35 40 35 42 35 48 Z" style="fill-rule: evenodd;"></path>
+      </svg>
+      <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-white">Log in to your account</h2>
+      <p class="mt-2 text-center text-sm text-white">
+        Or
+        <!--%= link_to "sign up to create account", new_user_registration_path, class: "font-medium text-mint hover:text-white transition-all drop-shadow-lg" %-->
+        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="font-medium text-mint hover:text-white transition-all drop-shadow-lg">sign up to create account</a>
+      </p>
+    </div>
+    <!--%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-6 gap-1 grid" }) do |f| %-->
+    <form id="account" method="post" class="mt-6 gap-1 grid">
+    <!--div class="mt-6 gap-1 grid"-->
+      <div class="transition-all group border scale-95 border-white hover:border-mint focus-within:bg-mint focus-within:border-mint focus-within:drop-shadow-xl bg-slate-800 hover:bg-mint rounded-md px-4 py-2 drop-shadow-lg hover:drop-shadow-xl focus-within:ring-0">
+        <!--%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "transition-colors block group-focus-within:placeholder-slate-800 group-focus-within:text-slate-800 group-focus-within:bg-mint focus:group-focus-within:placeholder-mint w-full font-bold border-none focus:outline-none py-2.5 text-mint group-hover:text-slate-800 bg-slate-800 group-hover:bg-mint placeholder-white group-hover:placeholder-slate-800 focus:ring-0 leading-tight group-hover:focus:placeholder-opacity-0 focus:placeholder-opacity-0 sm:text-lg" %-->
+        <input asp-for="Input.Email" placeholder="Email" class="transition-colors block group-focus-within:placeholder-slate-800 group-focus-within:text-slate-800 group-focus-within:bg-mint focus:group-focus-within:placeholder-mint w-full font-bold border-none focus:outline-none py-2.5 text-mint group-hover:text-slate-800 bg-slate-800 group-hover:bg-mint placeholder-white group-hover:placeholder-slate-800 focus:ring-0 leading-tight group-hover:focus:placeholder-opacity-0 focus:placeholder-opacity-0 sm:text-lg" autocomplete="username" aria-required="true" />
+        <label asp-for="Input.Email" class="sr-only"></label>
+        <!--span asp-validation-for="Input.Email" class="text-red-500"></span-->
+      </div>
+      <span asp-validation-for="Input.Email" class="mt-1.5 ml-4 text-red-500 text-lg"></span>
+      <!-- input type="hidden" name="remember" value="true" / -->
+      <div class="mt-3 bg-slate-800 transition-all group border scale-95 border-white hover:border-mint focus-within:bg-mint focus-within:border-mint focus-within:drop-shadow-xl hover:bg-mint rounded-md px-4 py-2 drop-shadow-lg hover:drop-shadow-xl focus-within:ring-0">
+        <!--%= f.label :password, class: "sr-only" %-->
+        <!--%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "transition-colors block group-focus-within:placeholder-slate-800 group-focus-within:text-slate-800 group-focus-within:bg-mint focus:group-focus-within:placeholder-mint w-full font-bold border-none focus:outline-none py-2.5 text-mint group-hover:text-slate-800 bg-slate-800 group-hover:bg-mint placeholder-white group-hover:placeholder-slate-800 focus:ring-0 leading-tight group-hover:focus:placeholder-opacity-0 focus:placeholder-opacity-0 sm:text-lg" %-->
+        <input asp-for="Input.Password" placeholder="Password" class="transition-colors block group-focus-within:placeholder-slate-800 group-focus-within:text-slate-800 group-focus-within:bg-mint focus:group-focus-within:placeholder-mint w-full font-bold border-none focus:outline-none py-2.5 text-mint group-hover:text-slate-800 bg-slate-800 group-hover:bg-mint placeholder-white group-hover:placeholder-slate-800 focus:ring-0 leading-tight group-hover:focus:placeholder-opacity-0 focus:placeholder-opacity-0 sm:text-lg" autocomplete="current-password" aria-required="true" />
+        <label asp-for="Input.Password" class="sr-only"></label>
+        <!--span asp-validation-for="Input.Password" class="text-red-500"></!--span-->
+      </div>
+      <span asp-validation-for="Input.Password" class="mt-1.5 ml-4 text-red-500 text-lg"></span>
+      <div class="hidden gap-1 mt-1.5 ml-4"> <!-- error -->
+        <svg class="block transition-all w-7 h-7 text-red group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 22 18" fill="currentColor">
+          <path opacity="1.000000" stroke="none" d="M8.46457 14.1213C8.07404 14.5118 8.07404 15.145 8.46457 15.5355C8.85509 15.926 9.48825 15.926 9.87878 15.5355L15.5356 9.87862C15.9262 9.4881 15.9262 8.85493 15.5356 8.46441C15.1451 8.07388 14.5119 8.07388 14.1214 8.46441L8.46457 14.1213Z" style="fill-rule: evenodd;"></path>
+          <path opacity="1.000000" stroke="none" d="M6.34315 17.6569C9.46734 20.781 14.5327 20.781 17.6569 17.6569C20.781 14.5327 20.781 9.46734 17.6569 6.34315C14.5327 3.21895 9.46734 3.21895 6.34315 6.34315C3.21895 9.46734 3.21895 14.5327 6.34315 17.6569ZM16.2426 16.2426C13.8995 18.5858 10.1005 18.5858 7.75736 16.2426C5.41421 13.8995 5.41421 10.1005 7.75736 7.75736C10.1005 5.41421 13.8995 5.41421 16.2426 7.75736C18.5858 10.1005 18.5858 13.8995 16.2426 16.2426Z" style="fill-rule: evenodd;"></path>
+        </svg>
+        <!--h1 class="text-red text-lg">Either email or password are incorrect
+        </!--h1-->
+      </div>
+      <div class="flex items-center justify-between mt-3 mx-5">
+        <!--% if devise_mapping.rememberable? %-->
+          <div class="flex items-center">
+            <!--%= f.check_box :remember_me, class: "h-4 w-4 rounded accent-[#00FF90]" %-->
+            <!--%= f.label :remember_me, class: "ml-2 block leading-tight text-white" %-->
+            <label asp-for="Input.RememberMe" class="block leading-tight text-white">
+              <input class="form-check-input h-4 w-4 rounded accent-[#00FF90]" asp-for="Input.RememberMe" />
+              @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+          </div>
+        <!--% end %-->
+        <div class="text-sm">
+          <!--a href="#" class="font-medium text-mint hover:text-white">Forgot your password?</!a-->
+          <a id="forgot-password" class="font-medium text-mint hover:text-white" asp-page="./ForgotPassword">Forgot your password?</a>
+        </div>
+      </div>
+      <!--%= f.submit "Log In", class: "w-full rounded-md border-none transition-all scale-95 hover:scale-100 bg-slate-700 mt-3 py-4 px-6 text-base font-bold text-white drop-shadow-lg hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:text-lg focus:outline-none focus:ring-0 sm:w-auto active:scale-90" %-->
+      <button id="login-submit" type="submit" class="w-full rounded-md border-none transition-all scale-95 hover:scale-100 bg-slate-700 mt-3 py-4 px-6 text-base font-bold text-white drop-shadow-lg hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:text-lg focus:outline-none focus:ring-0 sm:w-auto active:scale-90">Log In</button>
+    <!--/div-->
+    </form>
+    <!--% end %-->
+  </div>
+</div>
+
+<style>
+  .background-animate
+  {
+    background-size: 1000%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+  }
+
+  @@keyframes AnimationName {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
