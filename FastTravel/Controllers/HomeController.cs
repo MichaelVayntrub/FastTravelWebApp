@@ -16,7 +16,13 @@ namespace FastTravel.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<PetTicket> petTicketList = new List<PetTicket>();
+            return View(petTicketList);
+        }
+        [HttpPost]
+        public IActionResult Index(IEnumerable<PetTicket> petTicket)
+        {
+            return View(petTicket);
         }
 
         public IActionResult Privacy()
@@ -28,6 +34,12 @@ namespace FastTravel.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult MenuTrigger()
+        {
+            Debug.WriteLine("test");
+            return null;
         }
     }
 }
