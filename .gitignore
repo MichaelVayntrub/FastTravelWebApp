@@ -363,4 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Styles
-./wwwroot/css/styles.css
+styles.css
+FastTravel/wwwroot/css/styles.css
