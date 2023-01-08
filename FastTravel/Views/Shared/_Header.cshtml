@@ -3,9 +3,10 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
-<header class="bg-slate-800 border border-slate-700 border-b-1 border-t-0 border-x-0 nav-header flex-none" data-controller="header"> <!-- navbar bg -->
+<header class="bg-slate-800 border border-slate-700 border-b-1 border-t-0 border-x-0 nav-header flex-none sticky top-0 border-t-0 z-50" data-controller="header"> <!-- navbar bg -->
   <div class="mx-auto max-w-full sm:px-4 md:px-6 lg:px-10 xl:px-20"> <!-- navbar first container -->
     <div class="relative flex h-20 justify-between"> <!-- navbar second container (item holder) -->
+       <form asp-controller="Home" asp-action="Index"> 
         <button class="group z-10 h-20 relative flex px-0 items-center transition-all hover:scale-105 active:scale-90"> <!-- logo holder -->
             <svg class="hidden transition-all w-8 sm:block h-8 text-mint group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="currentColor">
             <path opacity="1.000000" stroke="none" d="M 84 55 C 75 62 65 69 54 76 C 48 79 41 80 41 70 C 41 51 41 41.8 41 26 C 41 16 48 17 54 20 C 65 27 75 34 84 41 C 90 46 90 50 84 55 Z" style="fill-rule: evenodd;"></path>
@@ -24,6 +25,7 @@
             <path d="M 399.831 276.88 L 399.831 221.734 L 410.205 221.734 L 410.205 276.88 Z" style="fill-rule: evenodd; white-space: pre;"></path>
             </svg>
         </button>
+      </form>
       <div class="relative flex-1 p-2 flex items-center justify-center lg:absolute sm:inset-0 gap-2"> <!-- search main container -->
         <div class="w-full lg:w-1/2 2xl:w-1/3">
           <label for="search" class="sr-only">Search</label>
@@ -102,7 +104,7 @@
               {
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                   <button  type="submit" class="text-white w-full text-left block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold">Log Out</button>
-                </form>              
+                </form>         
               }
               else
               {
@@ -111,7 +113,11 @@
               }
             </div>
             <div class="py-1" role="none">
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">About Us</a>
+              @if (SignInManager.IsSignedIn(User))
+              {
+                <a href="Admin/Index" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Admin Panel</a>        
+              }
+              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold">About Us</a>
             </div>
           </div>
         </div>

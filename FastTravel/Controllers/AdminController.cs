@@ -16,8 +16,9 @@ namespace FastTravel.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<PetTicket> petTicketList = _db.PetTickets.ToList();
-            return View(petTicketList);
+            //IEnumerable<PetTicket> petTicketList = _db.PetTickets.ToList();
+            //return View(petTicketList);
+            return View();
         }
 
         //GET
