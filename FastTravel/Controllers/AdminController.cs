@@ -13,12 +13,21 @@ namespace FastTravel.Controllers
         {
             _db = db;
         }
-
+    
         public IActionResult Index()
         {
-            //IEnumerable<PetTicket> petTicketList = _db.PetTickets.ToList();
-            //return View(petTicketList);
-            return View();
+            //IEnumerable<Flight> flightList = _db.Flights.ToList();
+            List<Flight> flightList = new List<Flight>();
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            flightList.Add(new Flight());
+            return View(flightList);
+            //return View();
         }
 
         //GET

@@ -8,6 +8,7 @@ namespace FastTravel.Data
         public DbSet<PetTicket> PetTickets { get; set; }
         public DbSet<Luggage> Luggages { get; set; }
         public DbSet<Animal> Animals { get; set; }
+        public DbSet<Flight> Flights { get; set; }
 
         public FastTravelDbContext(DbContextOptions<FastTravelDbContext> options) : base(options)
         {
