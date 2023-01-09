@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Port>
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="flex flex-1">
+  <div class="flex flex-col flex-1 px-2 sm:px-6 lg:px-10 xl:px-20">
+    <div class="flex-none w-full h-20">
+      <div class="flex justify-between items-center w-full h-full">
+        <div class="w-28">
+          <button 
+            id="FilterButton"
+            type="button" 
+            class="p-2 group hover:scale-105 active:scale-90 transition-all flex items-center relative px-2 border drop-shadow-lg bg-slate-800 hover:bg-mint border-white hover:border-mint rounded-full hover:drop-shadow-xl"
+            >
+              <svg id="FilterIcon" class="text-white ml-1 group-hover:text-slate-800 transition-all" width="24" height="24" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 8C6 7.44772 6.44772 7 7 7H17C17.5523 7 18 7.44772 18 8C18 8.55228 17.5523 9 17 9H7C6.44772 9 6 8.55228 6 8Z" fill="currentColor" />
+                <path d="M8 12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12C16 12.5523 15.5523 13 15 13H9C8.44772 13 8 12.5523 8 12Z" fill="currentColor" />
+                <path d="M11 15C10.4477 15 10 15.4477 10 16C10 16.5523 10.4477 17 11 17H13C13.5523 17 14 16.5523 14 16C14 15.4477 13.5523 15 13 15H11Z" fill="currentColor" />
+              </svg>
+              <p id="FilterText" class="text-white group-hover:text-slate-800 transition-all pr-3 font-bold uppercase">Filter
+              </p>
+          </button>
+          <div 
+            class="hidden transition-all absolute z-10 mt-2 origin-top-left divide-y divide-slate-700 rounded-md bg-slate-800 drop-shadow-lg hover:drop-shadow-xl border border-white hover:border-mint"
+            id="FilterItems"
+            role="menu" 
+            aria-orientation="vertical" 
+            aria-labelledby="menu-button" 
+            tabindex="-1"
+          >
+            <div class="p-4" role="none">
+              <div class="grid grid-cols-4 gap-4 items-center">
+                <p class="text-white text-sm col-span-1">Country:</p>
+                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <p class="text-white text-sm col-span-1">City:</p>
+                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <p class="text-white text-sm col-span-1">Sorting Order:</p>
+                <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  <option value="Something" class="">Something 1</option>
+                  <option value="Something2" class="">Something 2</option>
+                </select>
+              </div>
+            </div>
+            <div class="py-1" role="none">
+              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
+              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
+            </div>
+          </div>
+        </div>
+        <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">Admin Panel
+        </div>
+        <div class="w-28">
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-none w-full h-28">
+      <div class="w-full h-full flex justify-center items-center">
+        <div class="group flex bg-slate-800 rounded-full drop-shadow-lg">
+          <a href="./Flight" class="text-white text-lg font-bold pl-10 pr-8 py-2 bg-slate-800 rounded-l-full transition-all border border-white hover:bg-mint hover:pr-12 hover:pl-14 hover:text-slate-800 hover:border-none hover:drop-shadow-xl active:scale-90">Manage Flights
+          </a>
+          <a href="./Plane" class="text-white text-lg font-bold px-8 py-2 bg-slate-800 transition-all border border-white hover:bg-mint hover:pr-12 hover:pl-14 hover:text-slate-800 hover:border-none hover:drop-shadow-xl active:scale-90">Manage Planes
+          </a>
+          <button class="text-mint text-lg font-bold pr-10 pl-8 py-2 bg-slate-800 transition-all rounded-r-full border border-white hover:bg-mint hover:pr-12 hover:pl-14 hover:text-slate-800 hover:border-none hover:drop-shadow-xl cursor-default">Manage Ports
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 w-full">
+      <div class="flex h-full w-full">
+        <div class="flex w-2/3">
+          <div class="bg-slate-800 flex-1 m-2 border border-white rounded-md">
+            <div class="w-full h-full flex flex-col p-4 gap-4">
+              <!-- Insert Flights here -->
+              <button class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                <p>Add Port</p>
+              </button>
+              @foreach (var item in Model)
+              {
+              <button class="h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                <p>Country | City | Name</p>
+              </button>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="flex w-1/3">
+          <div class="bg-slate-800 flex-1 flex flex-col m-2">
+            <div class="border border-white rounded-md flex flex-col divide-y sticky h-auto top-24">
+              <div class="grid grid-cols-5 p-4 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg uppercase">Port</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">Country:</p>
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <p class="col-span-1 text-white font-bold">City:</p>
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <p class="col-span-1 text-white font-bold">Name:</p>
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+              </div>
+
+              <div class="grid grid-cols-5 p-4 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg uppercase">Images</p>
+                <p class="col-span-4"></p>
+                <label class="col-span-5 transition-all flex justify-center gap-3 items-center mx-10 py-3 bg-slate-800 rounded-lg drop-shadow-lg hover:drop-shadow-xl uppercase font-bold border border-white cursor-pointer hover:bg-mint text-white hover:text-slate-800 hover:border-none active:scale-90 hover:scale-105">
+                  <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <span class="text-base leading-tight">Select a file</span>
+                  <input type='file' class="hidden" />
+                </label>
+              </div>
+
+              <div class="grid grid-cols-2 p-4 gap-2 items-center">
+                <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
+                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
+                </button>
+                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts
+{
+  @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>*@
+
+  @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+  <script>
+    $(function () {
+      $('#datepicker').datetimepicker();
+    });
+  </script>*@
+
+  <script>
+    $("#FilterButton").click(function (event) 
+    {
+      if(!$("#FilterItems").is(":visible"))
+      {
+        $("#FilterItems").show();
+        $("#FilterButton").addClass("bg-mint border-mint drop-shadow-xl").removeClass("bg-slate-800 border-white drop-shadow-lg");
+        $("#FilterIcon").addClass("text-slate-800").removeClass("text-white");
+        $("#FilterText").addClass("text-slate-800").removeClass("text-white");
+      }
+      else
+      {
+        $("#FilterItems").hide();
+        $("#FilterButton").addClass("bg-slate-800 border-white drop-shadow-lg").removeClass("bg-mint border-mint drop-shadow-xl");
+        $("#FilterIcon").addClass("text-white").removeClass("text-slate-800");
+        $("#FilterText").addClass("text-white").removeClass("text-slate-800");
+      }
+      event.stopPropagation();
+    });
+    var flag = true;
+    $("#FilterItems").click(function (event) {
+        flag = false;
+        event.stopPropagation();
+    });
+    if (flag) {
+        $(document).click(function () {
+          $("#FilterItems").hide();
+          $("#FilterButton").addClass("bg-slate-800 border-white drop-shadow-lg").removeClass("bg-mint border-mint drop-shadow-xl");
+          $("#FilterIcon").addClass("text-white").removeClass("text-slate-800");
+          $("#FilterText").addClass("text-white").removeClass("text-slate-800");
+        });
+    }
+  </script>
+}

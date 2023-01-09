@@ -14,7 +14,7 @@ namespace FastTravel.Controllers
             _db = db;
         }
     
-        public IActionResult Index()
+        public IActionResult Flight()
         {
             //IEnumerable<Flight> flightList = _db.Flights.ToList();
             List<Flight> flightList = new List<Flight>();
@@ -30,8 +30,36 @@ namespace FastTravel.Controllers
             //return View();
         }
 
-        //GET
-        public IActionResult CreateLuggage()
+        public IActionResult Plane()
+        {
+            List<Plane> planeList = new List<Plane>();
+            planeList.Add(new Plane());
+            planeList.Add(new Plane());
+            planeList.Add(new Plane());
+            planeList.Add(new Plane());
+            return View(planeList);
+    }
+
+        public IActionResult Port()
+        {
+            List<Port> portList = new List<Port>();
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            portList.Add(new Port());
+            return View(portList);
+        }
+
+    //GET
+    public IActionResult CreateLuggage()
         {
             return View();
         }
