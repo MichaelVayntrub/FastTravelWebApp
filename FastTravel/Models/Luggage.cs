@@ -6,10 +6,13 @@ namespace FastTravel.Models
     {
         [Key]
         public int luggageID { get; set; }
+
         [Required]
         public string luggageType { get; set; }
+
         [Required]
         public float maxWeight { get; set; }
+
         [Required]
         public float price { get; set; }
     }

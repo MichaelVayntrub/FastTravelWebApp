@@ -7,10 +7,10 @@ namespace FastTravel.Models
         [Key]
         public int planeID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Number of seats is required.")]
         public int seatsNum { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Company is required.")]
         public string company { get; set; }
     }
 }

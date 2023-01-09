@@ -106,6 +106,20 @@
         $("#FilterIcon").addClass("text-white").removeClass("text-slate-800");
         $("#FilterText").addClass("text-white").removeClass("text-slate-800");
       }
+      event.stopPropagation();
     });
+    var flag = true;
+    $("#FilterItems").click(function (event) {
+        flag = false;
+        event.stopPropagation();
+    });
+    if (flag) {
+        $(document).click(function () {
+            $("#FilterItems").hide();
+            $("#FilterButton").addClass("bg-slate-800 border-white drop-shadow-lg").removeClass("bg-mint border-mint drop-shadow-xl");
+            $("#FilterIcon").addClass("text-white").removeClass("text-slate-800");
+            $("#FilterText").addClass("text-white").removeClass("text-slate-800");
+        });
+    }
   </script>
 }

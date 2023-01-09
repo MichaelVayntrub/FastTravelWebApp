@@ -4,21 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FastTravel.Models
 {
+    [ComplexType]
     public class Station
     {
-        [Key]
-        public int stationID { get; set; }
-
         [Key]
         public int order { get; set; }
 
         [Required]
-        public Date data { get; set; }
+        public Date date { get; set; }
 
         [Required]
         public TimeOfDay time { get; set; }
 
         [ForeignKey("portID")]
-        public int portID { get; set; }
+        public int port { get; set; }
     }
 }

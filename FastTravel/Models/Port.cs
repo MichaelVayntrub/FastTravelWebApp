@@ -7,13 +7,13 @@ namespace FastTravel.Models
         [Key]
         public int portID { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "Name is required.")]
+        public string name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Country is required.")]
         public string country { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "City is required.")]
         public string city { get; set; }
     }
 }
