@@ -33,24 +33,21 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-4 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Destination:</p>
-                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">Date From:</p>
                 <div class="col-span-3 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="text"
-                      value="@DateTime.Now.ToString("yyyy-MM-dd hh:mm")"
-                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" />
+                      type="date"
+                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="text-white text-sm col-span-1">Date To:</p>
                 <div class="col-span-3 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating flex xl:w-96 flex-1" data-mdb-toggle-button="false">
-                    <input type="text"
-                      class="form-control transition-all drop-shadow-lg flex-grow block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white transition-all hover:drop-shadow-xl rounded-md focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" data-mdb-toggle="datepicker" />
+                    <input type="date"
+                      class="form-control transition-all drop-shadow-lg flex-grow block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white transition-all hover:drop-shadow-xl rounded-md focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
@@ -116,50 +113,46 @@
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Destination</p>
                 <p class="col-span-4"></p>
                 <p class="col-span-1 text-white font-bold">From:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="text"
-                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" />
+                      type="date"
+                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">To:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="text"
-                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" />
+                      type="date"
+                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 1:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="text"
-                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" />
+                      type="date"
+                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 2:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="text"
-                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"
-                      placeholder="yyyy-MM-dd hh:mm" />
+                      type="date"
+                      class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
@@ -169,11 +162,11 @@
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Prices</p>
                 <p class="col-span-4"></p>
                 <p class="col-span-1 text-white font-bold">Child:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Adult:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Elder:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
               </div>
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
