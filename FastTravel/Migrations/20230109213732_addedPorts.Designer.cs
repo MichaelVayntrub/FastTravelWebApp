@@ -3,6 +3,7 @@ using FastTravel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations
 {
     [DbContext(typeof(FastTravelDbContext))]
-    partial class FastTravelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230109213732_addedPorts")]
+    partial class addedPorts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,26 +23,6 @@ namespace FastTravel.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("FastTravel.Models.Plane", b =>
-                {
-                    b.Property<int>("planeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("planeID"));
-
-                    b.Property<string>("company")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("seatsNum")
-                        .HasColumnType("int");
-
-                    b.HasKey("planeID");
-
-                    b.ToTable("Planes");
-                });
 
             modelBuilder.Entity("FastTravel.Models.Port", b =>
                 {

@@ -159,7 +159,7 @@
       @foreach (var item in Model)
       {
       <li class="relative">
-        <button class="group block w-full aspect-square overflow-hidden drop-shadow-lg transition-all hover:drop-shadow-xl hover:scale-105 active:scale-90">
+                    <button id="@Html.DisplayFor(modelItem => item.packageID)" class="packageButton group block w-full aspect-square overflow-hidden drop-shadow-lg transition-all hover:drop-shadow-xl hover:scale-105 active:scale-90">
           <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="rounded-xl w-full aspect-square object-cover pointer-events-none" />
           <span class="sr-only">View details</span>
         </button>
@@ -176,6 +176,10 @@
 @section Scripts
 {
   <script>
+    $(".packageButton").click(function (event) {
+        $("#modal-wrapper").show();
+        //alert(event.target.id);
+    });
   </script>
   <script>
     $("#FilterButton").click(function (event) 

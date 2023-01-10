@@ -25,10 +25,10 @@ namespace FastTravel.Controllers
             //List<PackageView> packageList = new List<PackageView>();
 
             List<Package> packageList = new List<Package>();
-            packageList.Add(new Package());
-            packageList.Add(new Package());
-            packageList.Add(new Package());
-            packageList.Add(new Package());
+            packageList.Add(new Package() { packageID = 1 });
+            packageList.Add(new Package() { packageID = 2 });
+            packageList.Add(new Package() { packageID = 3 });
+            packageList.Add(new Package() { packageID = 4 });
 
             return View(packageList);
         }
@@ -49,19 +49,5 @@ namespace FastTravel.Controllers
             Debug.WriteLine("test");
             return null;
         }
-
-        //private List<PackageView> FindAllPackages()
-        //{
-        //    List<PackageView> packages = new List<PackageView>();
-        //    List<Flight> flights = _db.Flights.ToList();
-
-
-        //}
-
-        //private StationView CreateStationView(Station station)
-        //{
-            //Port port = _db.Ports.Where(port => port.portID == station.portID).ToList()[0];
-            //return new StationView(station.order, station.time, station.date, port);
-        //}
     }
 }

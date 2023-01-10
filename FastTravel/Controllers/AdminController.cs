@@ -1,7 +1,9 @@
 ﻿using FastTravel.Data;
 using FastTravel.Models;
+using FastTravel.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Composition;
 
 namespace FastTravel.Controllers
 {
@@ -13,7 +15,7 @@ namespace FastTravel.Controllers
         {
             _db = db;
         }
-    
+
         public IActionResult Flight()
         {
             //IEnumerable<Flight> flightList = _db.Flights.ToList();
@@ -38,28 +40,37 @@ namespace FastTravel.Controllers
             planeList.Add(new Plane());
             planeList.Add(new Plane());
             return View(planeList);
-    }
-
-        public IActionResult Port()
-        {
-            List<Port> portList = new List<Port>();
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            portList.Add(new Port());
-            return View(portList);
         }
 
-    //GET
-    public IActionResult CreateLuggage()
+        //GET
+        public IActionResult Port()
+        {
+            PortsView portsView = new PortsView();
+            portsView.ports = _db.Ports.ToList();
+
+            return View(portsView);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddPort(PortsView portsView)
+        {
+            PortsView portsView2 = new PortsView();
+            List<Port> portList = _db.Ports.ToList();
+            Port newPort = portsView.newPort;
+
+            if (ModelState.IsValid)
+            {
+                _db.Add(newPort);
+                _db.SaveChanges();
+            }
+            portsView2.ports = _db.Ports.ToList();
+            return View("Port", portsView2);
+        }
+
+        //GET
+        public IActionResult CreateLuggage()
         {
             return View();
         }
