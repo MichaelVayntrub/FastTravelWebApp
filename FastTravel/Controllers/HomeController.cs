@@ -32,7 +32,11 @@ namespace FastTravel.Controllers
 
             return View(packageList);
         }
-
+        
+        public IActionResult Checkout()
+        { 
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
