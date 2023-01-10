@@ -12,9 +12,13 @@ namespace FastTravel.Data
 
         public FastTravelDbContext(DbContextOptions<FastTravelDbContext> options) : base(options)
         {
-
+            
         }
 
-
+        public void AddPlane(Plane plane)
+        {
+            Planes.Add(plane);
+            SaveChanges();
+        }
     }
 }

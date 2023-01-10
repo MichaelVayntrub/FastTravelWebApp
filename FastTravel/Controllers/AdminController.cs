@@ -19,30 +19,45 @@ namespace FastTravel.Controllers
         public IActionResult Flight()
         {
             //IEnumerable<Flight> flightList = _db.Flights.ToList();
-            List<Flight> flightList = new List<Flight>();
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            flightList.Add(new Flight());
-            return View(flightList);
-            //return View();
+            //List<Flight> flightList = new List<Flight>();
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+            //flightList.Add(new Flight());
+
+            FlightsView flightsView = new FlightsView();
+            flightsView.ports = _db.Ports.ToList();
+            return View(flightsView);
         }
 
         public IActionResult Plane()
         {
-            List<Plane> planeList = new List<Plane>();
-            planeList.Add(new Plane());
-            planeList.Add(new Plane());
-            planeList.Add(new Plane());
-            planeList.Add(new Plane());
-            return View(planeList);
+            PlanesView planesView = new PlanesView();
+            planesView.planes = _db.Planes.ToList();
+            return View(planesView);
         }
 
-        //GET
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddPlane(PlanesView planesView)
+        {
+            PlanesView planesView2 = new PlanesView();
+            List<Plane> planeList = _db.Planes.ToList();
+            Plane newPlane = planesView.newPlane;
+
+            if (ModelState.IsValid)
+            {
+                _db.AddPlane(newPlane);
+            }
+            planesView2.planes = _db.Planes.ToList();
+            return View("Plane", planesView2);
+        }
+
         public IActionResult Port()
         {
             PortsView portsView = new PortsView();

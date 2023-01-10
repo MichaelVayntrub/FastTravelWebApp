@@ -9,10 +9,14 @@ namespace FastTravel.Models
         public int flightNumber { get; set; }
 
         [Required]
-        public int portSource { get; set; }
+        public Port source { get; set; }
 
         [Required]
-        public int portDestination { get; set; }
+        public Port destination { get; set; }
+
+        public Port? stop1 { get; set; }
+
+        public Port? stop2 { get; set; }
 
         [Required]
         [ForeignKey("planeID")]

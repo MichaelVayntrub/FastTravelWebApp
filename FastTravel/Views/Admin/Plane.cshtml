@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plane>
+﻿@model FastTravel.ViewModels.PlanesView
 
 @{
     ViewData["Title"] = "Admin Panel";
@@ -73,7 +73,7 @@
     </div>
 
     <div class="flex-1 w-full">
-      <form class="flex h-full w-full" method="post">
+      <form class="flex h-full w-full" method="post" asp-action="AddPlane">
         <div class="flex w-2/3">
           <div class="bg-slate-800 flex-1 m-2 border border-white rounded-md">
             <div class="w-full h-full flex flex-col p-4 gap-4">
@@ -81,10 +81,10 @@
               <button class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
                 <p>Add Plane</p>
               </button>
-              @foreach (var item in Model)
+              @foreach (var item in Model.planes)
               {
               <button class="h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>Plane Number | Company | Seats</p>
+                <p>Plane @item.planeID | @item.company | @item.seatsNum</p>
               </button>
               }
             </div>
@@ -99,9 +99,9 @@
                 <p class="col-span-1 text-white font-bold">Number:</p>
                 <input type="text" placeholder="None" maxlength="4" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Company:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="newPlane.company" type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Seats:</p>
-                <input type="text" placeholder="None" maxlength="3" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="newPlane.seatsNum" type="text" placeholder="None" maxlength="3" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
               </div>
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">

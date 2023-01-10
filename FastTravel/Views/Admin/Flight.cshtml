@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Flight>
+﻿@model FastTravel.ViewModels.FlightsView
 
 @{
     ViewData["Title"] = "Admin Panel";
@@ -37,9 +37,9 @@
                 <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   <!-- For Michael: this is where the ports should show up -->
-                  @foreach (var item in Model)
+                  @foreach (var item in Model.ports)
                   {
-                  <option value="Something" class="">Something</option>
+                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
                   }
                 </select>
                 <p class="text-white text-sm col-span-1">Date From:</p>
@@ -102,7 +102,7 @@
                 <p>Add Flight</p>
               </button>
               <!-- For Michael: This is where the Flights show up -->
-              @foreach (var item in Model)
+              @foreach (var item in Model.flights)
               {
               <button class="h-24 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
                 <p>Flight Number - Flight Company - Flight Duration</p>
