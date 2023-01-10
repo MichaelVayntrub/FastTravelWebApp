@@ -6,11 +6,13 @@ namespace FastTravel.ViewModels
     {
         public IEnumerable<Port> ports { get; set; }
         public Port newPort { get; set; }
+        public PortFilter? filter { get; set; }
 
         public PortsView()
         {
             this.ports = new List<Port>();
             this.newPort = new Port();
+            this.filter = new PortFilter();
         }
     }
 }

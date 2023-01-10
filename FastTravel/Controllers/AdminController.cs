@@ -69,6 +69,21 @@ namespace FastTravel.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public IActionResult Port(PortsView portsView)
+        {
+            PortsView portsView2 = new PortsView();
+            if (portsView.filter != null)
+            {
+                portsView2.ports = _db.GetFilteredPortList(portsView.filter);
+            }
+            else portsView2.ports.ToList();
+
+            return View(portsView2);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddPort(PortsView portsView)
         {
             PortsView portsView2 = new PortsView();

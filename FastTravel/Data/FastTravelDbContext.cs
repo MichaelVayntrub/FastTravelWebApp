@@ -1,5 +1,7 @@
 ﻿using FastTravel.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 
 namespace FastTravel.Data
 {
@@ -19,6 +21,27 @@ namespace FastTravel.Data
         {
             Planes.Add(plane);
             SaveChanges();
+        }
+
+        public List<Port> GetFilteredPortList(PortFilter filter)
+        {
+            List<Port> filtered;
+
+            if (filter.country != null && filter.city != null)
+            {
+                filtered = Ports.FromSql($@"SELECT * FROM dbo.ports WHERE country = {filter.country}
+                                         AND city = {filter.city}").ToList();
+            }
+            else if(filter.country != null)
+            {
+                filtered = Ports.FromSql($"SELECT * FROM dbo.ports WHERE country = {filter.country}").ToList();
+            }
+            else if (filter.city != null)
+            {
+                filtered = Ports.FromSql($"SELECT * FROM dbo.ports WHERE city = {filter.city}").ToList();
+            }
+            else filtered = Ports.ToList();
+            return filtered;
         }
     }
 }

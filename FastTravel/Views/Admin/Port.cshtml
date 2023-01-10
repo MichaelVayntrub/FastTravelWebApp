@@ -22,7 +22,7 @@
               <p id="FilterText" class="text-white group-hover:text-slate-800 transition-all pr-3 font-bold uppercase">Filter
               </p>
           </button>
-          <div 
+          <form method="post" asp-controller="Admin" asp-action="Port"
             class="hidden transition-all absolute z-10 mt-2 origin-top-left divide-y divide-slate-700 rounded-md bg-slate-800 drop-shadow-lg hover:drop-shadow-xl border border-white hover:border-mint"
             id="FilterItems"
             role="menu" 
@@ -33,9 +33,9 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-4 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Country:</p>
-                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.country" type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">City:</p>
-                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.city" type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">Sorting Order:</p>
                 <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
@@ -46,9 +46,9 @@
             </div>
             <div class="py-1" role="none">
               <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
+              <a href="javascript: submitForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
             </div>
-          </div>
+          </form>
         </div>
         <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">Admin Panel
         </div>
@@ -143,7 +143,11 @@
       $('#datepicker').datetimepicker();
     });
   </script>*@
-
+  <script>
+        function submitForm() {
+            $('#FilterItems').submit();
+        }
+  </script>
   <script>
     $("#FilterButton").click(function (event) 
     {
