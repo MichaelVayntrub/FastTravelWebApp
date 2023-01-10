@@ -33,7 +33,15 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-4 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Destination:</p>
-                <input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <!--input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none"-->
+                <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  <!-- For Michael: this is where the ports should show up -->
+                  @foreach (var item in Model)
+                  {
+                  <option value="Something" class="">Something</option>
+                  }
+                </select>
                 <p class="text-white text-sm col-span-1">Date From:</p>
                 <div class="col-span-3 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
@@ -90,10 +98,10 @@
         <div class="flex w-2/3">
           <div class="bg-slate-800 flex-1 m-2 border border-white rounded-md">
             <div class="w-full h-full flex flex-col p-4 gap-4">
-              <!-- Insert Flights here -->
               <button class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
                 <p>Add Flight</p>
               </button>
+              <!-- For Michael: This is where the Flights show up -->
               @foreach (var item in Model)
               {
               <button class="h-24 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
