@@ -33,7 +33,6 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-4 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Destination:</p>
-                <!--input type="text" placeholder="None" class="col-span-3 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none"-->
                 <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   <!-- For Michael: this is where the ports should show up -->
@@ -120,8 +119,23 @@
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Destination</p>
                 <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">Plane:</p>
+                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  @foreach (var item in Model.planes)
+                  {
+                    <option value="@item" class="">@item.planeID (@item.company, @item.seatsNum)</option>
+                  }
+                </select>
                 <p class="col-span-1 text-white font-bold">From:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
+                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  @foreach (var item in Model.ports)
+                  {
+                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                  }
+                </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
@@ -132,7 +146,14 @@
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">To:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
+                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  @foreach (var item in Model.ports)
+                  {
+                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                  }
+                </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
@@ -143,7 +164,14 @@
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 1:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
+                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  @foreach (var item in Model.ports)
+                  {
+                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                  }
+                </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
@@ -154,7 +182,14 @@
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 2:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
+                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                  <option value="" class="">None</option>
+                  @foreach (var item in Model.ports)
+                  {
+                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                  }
+                </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
@@ -167,14 +202,12 @@
               </div>
 
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
-                <p class="col-span-1 text-white font-bold text-lg uppercase">Prices</p>
-                <p class="col-span-4"></p>
                 <p class="col-span-1 text-white font-bold">Child:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Adult:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Elder:</p>
-                <input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
               </div>
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
