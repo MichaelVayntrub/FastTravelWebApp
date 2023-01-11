@@ -5,13 +5,15 @@ namespace FastTravel.ViewModels
 {
     public class PackageView
     {
-        public List<User> users;
-        public List<Flight> flights;
+        public IEnumerable<Package> packages { get; set; }
+        public Package curr { get; set; }
+        public int chosenPackage { get; set; }
 
-        public PackageView(List<User> users, List<Flight> flights)
+        public PackageView()
         {
-            this.users = users;
-            this.flights = flights;
+            packages = new List<Package>();
+            curr = new Package();
+            chosenPackage = -1;
         }
     }
 }

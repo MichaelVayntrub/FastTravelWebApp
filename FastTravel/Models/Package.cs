@@ -12,7 +12,10 @@ namespace FastTravel.Models
         public string image { get; set; }
 
         [ForeignKey("flightNumber")]
-        public int flightNumber { get; set; }
+        public Flight flight1 { get; set; }
+
+        [ForeignKey("flightNumber")]
+        public Flight? flight2 { get; set; }
 
         [ForeignKey("userID")]
         public int userID { get; set; }

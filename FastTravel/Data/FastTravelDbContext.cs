@@ -9,8 +9,9 @@ namespace FastTravel.Data
     {
         public DbSet<Port> Ports { get; set; }
         public DbSet<Plane> Planes { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+
         //public DbSet<Luggage> Luggages { get; set; }
-        //public DbSet<Flight> Flights { get; set; }
 
         public FastTravelDbContext(DbContextOptions<FastTravelDbContext> options) : base(options)
         {
@@ -80,6 +81,27 @@ namespace FastTravel.Data
                 filtered = filtered.Where(x => x.dateTo <= filter.dateTo).ToList();
             }
             return filtered;
+        }
+
+        public Port FindPort(int id)
+        {
+            return Ports.First(p => p.portID == id);
+        }
+        public Plane FindPlane(int id)
+        {
+            return Planes.First(p => p.planeID == id);
+        }
+
+        public List<Package> GetAllPackages()
+        {
+            List<Package> packages = new List<Package>();
+            int count = 0;
+
+            foreach(Flight flight in Flights)
+            {
+                packages.Add(new Package() { flight1 = flight, packageID = count++ });
+            }
+            return packages;
         }
     }
 }

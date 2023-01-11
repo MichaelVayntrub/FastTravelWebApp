@@ -83,9 +83,12 @@
               </form>
               @foreach (var item in Model.ports)
               {
-              <button class="h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>@item.country | @item.city | @item.name</p>
-              </button>
+              <form method="post" asp-action="Port">
+                  <button id=@item.portID class="h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                    <p>@item.country | @item.city | @item.name</p>
+                    <input asp-for="chosenPort" hidden value="@item.portID">
+                  </button>
+              </form>
               }
             </div>
           </div>
@@ -119,8 +122,11 @@
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
                 <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
                 <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
+                    <input type="number" asp-for="delete" hidden value = 0>
                 </button>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
+                <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
+                    <input type="number" asp-for="delete" hidden value = 1>
+                    <input asp-for="chosenPort" hidden value = "@Model.chosenPort">
                 </button>
               </div>
             </div>

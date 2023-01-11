@@ -3,6 +3,7 @@ using FastTravel.Models;
 using FastTravel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.OData.Edm;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,17 +23,35 @@ namespace FastTravel.Controllers
 
         public IActionResult Index()
         {
-            //List<PackageView> packageList = new List<PackageView>();
+            PackageView view = new PackageView();
+            //view.packages = _db.GetAllPackages();
+            Flight f = new Flight() { flightNumber = 1, source = _db.Ports.First(), destination = _db.Ports.First() };
+            view.packages = new List<Package>()
+            {
+                new Package(){packageID = 0, flight1 = f},
+            };
 
-            List<Package> packageList = new List<Package>();
-            packageList.Add(new Package() { packageID = 1 });
-            packageList.Add(new Package() { packageID = 2 });
-            packageList.Add(new Package() { packageID = 3 });
-            packageList.Add(new Package() { packageID = 4 });
-
-            return View(packageList);
+            return View(view);
         }
-        
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(PackageView view)
+        {
+            //view.packages = _db.GetAllPackages();
+            Flight f = new Flight() { flightNumber = 1, source = _db.Ports.First(), destination = _db.Ports.First() };
+            view.packages = new List<Package>()
+            {
+                new Package(){packageID = 0, flight1 = f},
+            };
+            if (view.chosenPackage != -1)
+            {
+                view.curr = view.packages.ToList()[view.chosenPackage];
+            }
+            return View(view);
+        }
+
         public IActionResult Checkout()
         { 
             return View();

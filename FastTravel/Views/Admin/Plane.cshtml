@@ -85,10 +85,12 @@
               </form>
               @foreach (var item in Model.planes)
               {
-              
-              <button id="@item.planeID" type="submit" class="planeButton h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>Plane @item.planeID | @item.company | @item.seatsNum </p>
-              </button>
+              <form method="post" asp-action="Plane">
+                  <button id="@item.planeID" type="submit" class="planeButton h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                    <p>Plane @item.planeID | @item.company | @item.seatsNum </p>
+                    <input asp-for="chosenPlane" hidden value="@item.planeID">
+                  </button>
+              </form>
               }
             </div>
           </div>

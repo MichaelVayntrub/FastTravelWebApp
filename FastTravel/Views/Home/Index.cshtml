@@ -1,10 +1,11 @@
-﻿@model IEnumerable<Package>
+﻿@model FastTravel.ViewModels.PackageView
 
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div 
+@if (Model.chosenPackage != -1)
+{
+    <div 
   data-controller="modal"
   id="modal-wrapper"
   class="hidden relative z-10"
@@ -12,84 +13,84 @@
   role="dialog"
   aria-modal="true"
 >
-  <div 
+        <div 
     id="modal-backdrop" 
     class="fixed inset-0 bg-slate-900 bg-opacity-75 transition-opacity backdrop-blur h-full"
   ></div>
 
-  <div class="fixed inset-0 z-10 overflow-y-auto">
-    <div class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
-      <div 
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
+                <div 
         id="modal-panel" 
         class="relative transform overflow-hidden divide-slate-700 rounded-lg bg-slate-800 text-left shadow-xl transition-all max-h-screen mt-28 mb-24 w-full md:mx-10 lg:mx-20 xl:mx-28"
       >
-          
-      <div class="flex w-full">
-        <div class="w-1/5 p-4 flex flex-col">
-          <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="mb-3 drop-shadow-lg rounded-xl w-full aspect-square object-cover pointer-events-none" />
-          <p class="text-white xl:text-lg">To: Vietnam - Hanoi</p>
-          <p class="text-white xl:text-lg">Take off: 2023/01/09 13:40</p>
-          <p class="text-white xl:text-lg">Available Seats: 34</p>
-          <p class="text-white xl:text-lg">Child Price: 1,130.99$</p>
-          <p class="text-white xl:text-lg">Adult Price: 1,229.99$</p>
-          <p class="text-white xl:text-lg">Elder Price: 999.99$</p>
-        </div>
-        <div class="w-4/5 p-4 flex flex-col gap-4 max-h-screen">
-          <div class="flex-none flex justify-between font-bold leading-tight text-xl text-white">
-            <div class="flex items-center">
-              <h1>From&nbsp</h1>
-              <h1 class="text-mint">Israel - Tel Aviv</h1>
-              <h1>&nbspto&nbsp</h1>
-              <h1 class="text-mint">Vietnam - Hanoi</h1>
-            </div>
-            <button class="bg-slate-800 rounded-full font-bold text-white uppercase p-1 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z" fill="currentColor" /></svg>
-            </button>
-          </div>
-          <div class="flex-1 flex-col overflow-y-scroll p-4 text-white bg-slate-700 shadow-inner gap-6">
-            <div>
-              <p>Flight Number - Flight Company - Flight Duration</p>
-              <p>Origin Country | Date | Day | Time | City | Port</p>
-              <p>Destination | Date | Day | Time | City | Port</p>
-              <br>
-            </div>
-            <div>
-              <p>Flight Number - Flight Company - Flight Duration</p>
-              <p>Origin Country | Date | Day | Time | City | Port</p>
-              <p>Destination | Date | Day | Time | City | Port</p>
-              <br>
-            </div>
-            <div>
-              <p>Flight Number - Flight Company - Flight Duration</p>
-              <p>Origin Country | Date | Day | Time | City | Port</p>
-              <p>Destination | Date | Day | Time | City | Port</p>
-              <br>
-            </div>
-            <div>
-              <p>Flight Number - Flight Company - Flight Duration</p>
-              <p>Origin Country | Date | Day | Time | City | Port</p>
-              <p>Destination | Date | Day | Time | City | Port</p>
-              <br>
-            </div>
-          </div>
-          <div class="flex-none flex justify-between items-center font-bold leading-tight text-xl text-white">
-            <div class="flex">
-              <p>Stops:&nbsp</p>
-              <p>0</p>
-            </div>
-            <div class="flex items-center">
-              <button class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      </div>
+                    <div class="flex w-full">
+                        <div class="w-1/5 p-4 flex flex-col">
+                            <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="mb-3 drop-shadow-lg rounded-xl w-full aspect-square object-cover pointer-events-none" />
+                            <p class="text-white xl:text-lg">To: Vietnam - Hanoi</p>
+                            <p class="text-white xl:text-lg">Take off: 2023/01/09 13:40</p>
+                            <p class="text-white xl:text-lg">Available Seats: 34</p>
+                            <p class="text-white xl:text-lg">Child Price: 1,130.99$</p>
+                            <p class="text-white xl:text-lg">Adult Price: 1,229.99$</p>
+                            <p class="text-white xl:text-lg">Elder Price: 999.99$</p>
+                        </div>
+                        <div class="w-4/5 p-4 flex flex-col gap-4 max-h-screen">
+                            <div class="flex-none flex justify-between font-bold leading-tight text-xl text-white">
+                                <div class="flex items-center">
+                                    <h1>From&nbsp</h1>
+                                    <h1 class="text-mint">@Model.curr.flight1.source.country - @Model.curr.flight1.source.city</h1>
+                                    <h1>&nbspto&nbsp</h1>
+                                    <h1 class="text-mint">@Model.curr.flight1.destination.country - @Model.curr.flight1.destination.city</h1>
+                                </div>
+                                <button class="bg-slate-800 rounded-full font-bold text-white uppercase p-1 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z" fill="currentColor" /></svg>
+                                </button>
+                            </div>
+                            <div class="flex-1 flex-col overflow-y-scroll p-4 text-white bg-slate-700 shadow-inner gap-6">
+                                <div>
+                                    <p>Flight Number - Flight Company - Flight Duration</p>
+                                    <p>Origin Country | Date | Day | Time | City | Port</p>
+                                    <p>Destination | Date | Day | Time | City | Port</p>
+                                    <br>
+                                </div>
+                                <div>
+                                    <p>Flight Number - Flight Company - Flight Duration</p>
+                                    <p>Origin Country | Date | Day | Time | City | Port</p>
+                                    <p>Destination | Date | Day | Time | City | Port</p>
+                                    <br>
+                                </div>
+                                <div>
+                                    <p>Flight Number - Flight Company - Flight Duration</p>
+                                    <p>Origin Country | Date | Day | Time | City | Port</p>
+                                    <p>Destination | Date | Day | Time | City | Port</p>
+                                    <br>
+                                </div>
+                                <div>
+                                    <p>Flight Number - Flight Company - Flight Duration</p>
+                                    <p>Origin Country | Date | Day | Time | City | Port</p>
+                                    <p>Destination | Date | Day | Time | City | Port</p>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="flex-none flex justify-between items-center font-bold leading-tight text-xl text-white">
+                                <div class="flex">
+                                    <p>Stops:&nbsp</p>
+                                    <p>0</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <button class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
+}
 <div class="flex flex-col flex-1 px-6 lg:px-10 xl:px-20">
   <div class="flex-none w-full h-20">
     <div class="flex justify-between items-center w-full h-full">
@@ -155,18 +156,21 @@
   </div>
   <div class="flex justify-center">
     <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-5 md:grid-cols-4 md:gap-x-6 lg:grid-cols-5 lg:gap-x-7 xl:grid-cols-6 xl:gap-x-8">
-      @foreach (var item in Model)
+      @foreach (var item in Model.packages)
       {
-      <li class="relative">
-                    <button id="@Html.DisplayFor(modelItem => item.packageID)" class="packageButton group block w-full aspect-square overflow-hidden drop-shadow-lg transition-all hover:drop-shadow-xl hover:scale-105 active:scale-90">
-          <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="rounded-xl w-full aspect-square object-cover pointer-events-none" />
-          <span class="sr-only">View details</span>
-        </button>
-        <p class="pointer-events-none mt-2 font-bold leading-tight sm:text-lg block truncate text-mint">Vietnam - Hanoi</p>
-        <p class="pointer-events-none block text-sm font-medium text-white">27/12/2022 13:30</p>
-        <p class="pointer-events-none block text-sm font-medium text-white">26 Seats left</p>
-        <p class="pointer-events-none mt-1 block text-sm font-bold text-white">1,299.99$</p>
-      </li>
+      <form method="post" asp-action="Index">
+          <li class="relative">
+              <button type="submit" class="packageButton group block w-full aspect-square overflow-hidden drop-shadow-lg transition-all hover:drop-shadow-xl hover:scale-105 active:scale-90">
+              <input hidden asp-for="chosenPackage" value="@item.packageID">
+              <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="rounded-xl w-full aspect-square object-cover pointer-events-none" />
+              <span class="sr-only">View details</span>
+            </button>
+            <p class="pointer-events-none mt-2 font-bold leading-tight sm:text-lg block truncate text-mint">@item.flight1.source.country - @item.flight1.destination.country</p>
+            <p class="pointer-events-none block text-sm font-medium text-white">27/12/2022 13:30</p>
+            <p class="pointer-events-none block text-sm font-medium text-white">26 Seats left</p>
+            <p class="pointer-events-none mt-1 block text-sm font-bold text-white">1,299.99$</p>
+          </li>
+      </form>
       }
     </ul>
   </div>
@@ -175,9 +179,11 @@
 @section Scripts
 {
   <script>
-    $(".packageButton").click(function (event) {
-        $("#modal-wrapper").show();
-        //alert(event.target.id);
+      $(document).ready(function () {
+        if(@Model.chosenPackage != -1)
+        {
+          $("#modal-wrapper").show();
+        }
     });
   </script>
   <script>

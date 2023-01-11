@@ -46,21 +46,17 @@ namespace FastTravel.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Plane(PlanesView planesView)
         {
-            PlanesView portsView2 = new PlanesView();
-            portsView2.planes = _db.GetFilteredPlaneList(planesView.filter);
-
-            return View(portsView2);
-        }
-
-        //POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Plane(Plane plane)
-        {
-            PlanesView portsView2 = new PlanesView();
-            portsView2.newPlane = plane;
-            
-            return View(portsView2);
+            if (planesView.chosenPlane != -1)
+            {
+                planesView.newPlane = _db.FindPlane(planesView.chosenPlane);
+                planesView.planes = _db.Planes.ToList();
+                planesView.chosenPlane = -1;
+            }
+            else
+            {
+                planesView.planes = _db.GetFilteredPlaneList(planesView.filter);
+            }
+            return View(planesView);
         }
 
         //POST
@@ -80,6 +76,7 @@ namespace FastTravel.Controllers
             return View("Plane", planesView2);
         }
 
+
         public IActionResult Port()
         {
             PortsView portsView = new PortsView();
@@ -93,52 +90,45 @@ namespace FastTravel.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Port(PortsView portsView)
         {
-            PortsView portsView2 = new PortsView();
-            if (portsView.filter != null)
+            if (portsView.chosenPort != -1)
             {
-                portsView2.ports = _db.GetFilteredPortList(portsView.filter);
+                portsView.newPort = _db.FindPort(portsView.chosenPort);
+                portsView.ports = _db.Ports.ToList();
             }
-            else portsView2.ports.ToList();
-
-            return View(portsView2);
+            else
+            {
+                portsView.ports = _db.GetFilteredPortList(portsView.filter);
+            }
+            return View(portsView);
         }
+
 
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddPort(PortsView portsView)
         {
-            PortsView portsView2 = new PortsView();
-            List<Port> portList = _db.Ports.ToList();
-            Port newPort = portsView.newPort;
-
-            if (ModelState.IsValid)
+            if (portsView.delete != 0)
             {
-                _db.Add(newPort);
-                _db.SaveChanges();
+                if (portsView.chosenPort != -1)
+                {
+                    Port oldPort = _db.FindPort(portsView.chosenPort);
+                    _db.Remove(oldPort);
+                    _db.SaveChanges();
+                }
+                portsView.newPort = new Port();
             }
-            portsView2.ports = _db.Ports.ToList();
-            return View("Port", portsView2);
+            else 
+            {
+                Port newPort = portsView.newPort;
+                if (ModelState.IsValid)
+                {
+                    _db.Add(newPort);
+                    _db.SaveChanges();
+                }
+            }
+            portsView.ports = _db.Ports.ToList();
+            return View("Port", portsView);
         }
-
-        ////GET
-        //public IActionResult CreateLuggage()
-        //{
-        //    return View();
-        //}
-
-        ////POST
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult CreateLuggage(Luggage luggage)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Add(luggage);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(luggage);
-        //}
     }
 }

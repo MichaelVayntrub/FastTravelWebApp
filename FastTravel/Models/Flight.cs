@@ -19,8 +19,8 @@ namespace FastTravel.Models
 
         public Port? stop2 { get; set; }
 
-        public Date dateFrom { get; set; }
-        public Date dateTo { get; set; }
+        public DateTime dateFrom { get; set; }
+        public DateTime dateTo { get; set; }
 
         [Required]
         [ForeignKey("planeID")]
