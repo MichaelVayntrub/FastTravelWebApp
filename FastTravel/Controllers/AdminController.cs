@@ -116,7 +116,6 @@ namespace FastTravel.Controllers
                     _db.Remove(oldPort);
                     _db.SaveChanges();
                 }
-                portsView.newPort = new Port();
             }
             else 
             {
@@ -127,7 +126,9 @@ namespace FastTravel.Controllers
                     _db.SaveChanges();
                 }
             }
+            portsView.newPort = new Port();
             portsView.ports = _db.Ports.ToList();
+
             return View("Port", portsView);
         }
     }

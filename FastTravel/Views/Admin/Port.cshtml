@@ -121,12 +121,11 @@
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
                 <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
-                <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
-                    <input type="number" asp-for="delete" hidden value = 0>
+                <input id="applyIn" asp-for="chosenPort" hidden value = "@Model.chosenPort">
+                <input id="deleteIn" asp-for="delete" hidden value = "@Model.delete">
+                <button id="applyBtn" type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
                 </button>
-                <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
-                    <input type="number" asp-for="delete" hidden value = 1>
-                    <input asp-for="chosenPort" hidden value = "@Model.chosenPort">
+                <button id="deleteBtn" type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
                 </button>
               </div>
             </div>
@@ -158,6 +157,14 @@
     function resetForm() {
         FilterItems.reset();
     }
+    $("#applyBtn").click(function (event) 
+    {
+        $("#applyIn").val(0);
+    });
+    $("#deleteBtn").click(function (event) 
+    {
+        $("#deleteIn").val(1);
+    });
   </script>
   <script>
     $("#FilterButton").click(function (event) 
