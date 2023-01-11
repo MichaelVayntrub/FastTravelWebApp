@@ -34,22 +34,19 @@ namespace FastTravel.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(PackageView view)
         {
-            //view.packages = _db.GetAllPackages();
-            Flight f = new Flight() { flightNumber = 1, source = _db.Ports.First(), destination = _db.Ports.First() };
-            view.packages = new List<Package>()
-            {
-                new Package(){packageID = 0, flight1 = f},
-            };
+            view.packages = _db.GetAllPackages();
             if (view.chosenPackage != -1)
             {
                 view.curr = view.packages.ToList()[view.chosenPackage];
             }
             return View(view);
         }
-
-        public IActionResult Checkout()
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Checkout(PackageView view)
         { 
-            return View();
+            return View(_db.GetAllPackages().ToList()[view.chosenPackage]);
         }
         public IActionResult Privacy()
         {
