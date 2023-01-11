@@ -6,24 +6,31 @@ namespace FastTravel.Models
 {
     public class Flight
     {
-        [Key]
+        [Required]
         public int flightNumber { get; set; }
 
         [Required]
         public Port source { get; set; }
 
+        public DateTime dateFrom { get; set; }
+
         [Required]
         public Port destination { get; set; }
 
+        public DateTime dateTo { get; set; }
+
         public Port? stop1 { get; set; }
+
+        public DateTime? date1 { get; set; }
 
         public Port? stop2 { get; set; }
 
-        public DateTime dateFrom { get; set; }
-        public DateTime dateTo { get; set; }
+        public DateTime? date2 { get; set; }
 
-        [Required]
-        [ForeignKey("planeID")]
-        public int plane { get; set; }
+        public Plane plane { get; set; }
+
+        public float child { get; set; }
+        public float adult { get; set; }
+        public float elder { get; set; }
     }
 }

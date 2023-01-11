@@ -45,7 +45,7 @@
                 <div class="col-span-3 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="date"
+                      type="datetime-local" 
                       class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
@@ -53,7 +53,7 @@
                 <p class="text-white text-sm col-span-1">Date To:</p>
                 <div class="col-span-3 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating flex xl:w-96 flex-1" data-mdb-toggle-button="false">
-                    <input type="date"
+                    <input type="datetime-local"
                       class="form-control transition-all drop-shadow-lg flex-grow block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white transition-all hover:drop-shadow-xl rounded-md focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
@@ -93,108 +93,108 @@
     </div>
 
     <div class="flex-1 w-full">
-      <form class="flex h-full w-full" method="post">
+      <div class="flex h-full w-full">
         <div class="flex w-2/3">
           <div class="bg-slate-800 flex-1 m-2 border border-white rounded-md">
             <div class="w-full h-full flex flex-col p-4 gap-4">
               <button class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
                 <p>Add Flight</p>
               </button>
-              <!-- For Michael: This is where the Flights show up -->
+              <!-- This is where the Flights show up -->
               @foreach (var item in Model.flights)
               {
               <button class="h-24 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>Flight Number - Flight Company - Flight Duration</p>
-                <p>Origin Country | Date | Day | Time | City | Port</p>
-                <p>Destination | Date | Day | Time | City | Port</p>
+                <p>@item.flightNumber - @item.plane.company - Flight Duration</p>
+                <p>@item.source.country | @item.dateFrom | @item.source.city | @item.source.name</p>
+                <p>@item.destination.country | @item.dateTo | @item.destination.city | @item.destination.name</p>
                 <p>TakenSeats | AvailableSeats</p>
               </button>
               }
             </div>
           </div>
         </div>
-        <div class="flex w-1/3">
+        <form class="flex w-1/3" method="post" asp-controller="Admin" asp-action="AddFlight">
           <div class="bg-slate-800 flex-1 flex flex-col m-2">
             <div class="border border-white rounded-md flex flex-col divide-y sticky h-auto top-24">
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Destination</p>
                 <p class="col-span-4"></p>
                 <p class="col-span-1 text-white font-bold">Plane:</p>
-                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                <select asp-for=plane class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   @foreach (var item in Model.planes)
                   {
-                    <option value="@item" class="">@item.planeID (@item.company, @item.seatsNum)</option>
+                    <option value="@item.planeID" class="">@item.planeID | @item.company, @item.seatsNum)</option>
                   }
                 </select>
                 <p class="col-span-1 text-white font-bold">From:</p>
                 <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
-                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                <select asp-for=source class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   @foreach (var item in Model.ports)
                   {
-                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                    <option value="@item.portID" class="">@item.name (@item.country, @item.city)</option>
                   }
                 </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="date"
+                      type="datetime" asp-for="flight.dateTo"
                       class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">To:</p>
                 <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
-                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                <select asp-for="destination" class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   @foreach (var item in Model.ports)
                   {
-                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                    <option value="@item.portID" class="">@item.name (@item.country, @item.city)</option>
                   }
                 </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="date"
+                      type="datetime" asp-for="flight.dateFrom"
                       class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 1:</p>
                 <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
-                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                <select asp-for="stop1" class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   @foreach (var item in Model.ports)
                   {
-                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                    <option value="@item.portID" class="">@item.name (@item.country, @item.city)</option>
                   }
                 </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="date"
+                      type="datetime" asp-for="flight.date1"
                       class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
                 <p class="col-span-1 text-white font-bold">Stop 2:</p>
                 <!--input type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
-                <select class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
+                <select asp-for="stop2" class="col-span-4 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
                   @foreach (var item in Model.ports)
                   {
-                    <option value="@item" class="">@item.name (@item.country, @item.city)</option>
+                    <option value="@item.portID" class="">@item.name (@item.country, @item.city)</option>
                   }
                 </select>
                 <p class="col-span-1"></p>
                 <div class="col-span-4 flex items-center flex-1 justify-center">
                   <div class="datepicker relative form-floating xl:w-96 flex flex-1" data-mdb-toggle-button="false">
                     <input 
-                      type="date"
+                      type="datetime" asp-for="flight.date2"
                       class="form-control transition-all drop-shadow-lg block text-sm bg-slate-800 w-full pl-4 py-3 font-bold text-white placeholder-white border border-white rounded-md hover:drop-shadow-xl focus:drop-shadow-xl hover:placeholder-mint focus:placeholder-mint focus:ring-0 hover:text-mint focus:text-mint focus:border-mint hover:border-mint outline-none focus:outline-non"/>
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
@@ -203,24 +203,24 @@
 
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
                 <p class="col-span-1 text-white font-bold">Child:</p>
-                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="flight.child" type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Adult:</p>
-                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="flight.adult" type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Elder:</p>
-                <input type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="flight.elder" type="number" min="1" step="any" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
               </div>
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
                 <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
-                <button class="bg-slate-800 mx-4 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
+                <button type="submit" class="bg-slate-800 mx-4 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
                 </button>
                 <button class="bg-slate-800 mx-4 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Cancel
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -18,20 +18,45 @@ namespace FastTravel.Controllers
 
         public IActionResult Flight()
         {
-            //IEnumerable<Flight> flightList = _db.Flights.ToList();
-            //List<Flight> flightList = new List<Flight>();
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-            //flightList.Add(new Flight());
-
             FlightsView flightsView = new FlightsView();
             flightsView.ports = _db.Ports.ToList();
+            flightsView.planes = _db.Planes.ToList();
+            flightsView.flights = _db.GetFlights();
+            flightsView.flight = new Flight();
             return View(flightsView);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Flight(FlightsView flightsView)
+        {
+            flightsView.ports = _db.Ports.ToList();
+            flightsView.planes = _db.Planes.ToList();
+            flightsView.flights = _db.GetFlights();
+            return View(flightsView);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddFlight(FlightsView flightsView)
+        {
+            Flight newFlight = flightsView.flight;
+
+            newFlight.plane = _db.FindPlane(flightsView.plane);
+            newFlight.source = _db.FindPort(flightsView.source);
+            newFlight.destination = _db.FindPort(flightsView.destination);
+            newFlight.stop1 = _db.FindPort(flightsView.stop1);
+            newFlight.stop2 = _db.FindPort(flightsView.stop2);
+            //if (ModelState.IsValid)
+            //{
+                _db.AddFlight(newFlight);
+            //}
+            flightsView.flights = _db.GetFlights();
+            flightsView.ports = _db.Ports.ToList();
+            flightsView.planes = _db.Planes.ToList();
+            return View("Flight", flightsView);
         }
 
         public IActionResult Plane()
@@ -101,7 +126,6 @@ namespace FastTravel.Controllers
             }
             return View(portsView);
         }
-
 
         //POST
         [HttpPost]

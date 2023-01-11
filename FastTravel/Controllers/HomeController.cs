@@ -24,13 +24,8 @@ namespace FastTravel.Controllers
         public IActionResult Index()
         {
             PackageView view = new PackageView();
-            //view.packages = _db.GetAllPackages();
-            Flight f = new Flight() { flightNumber = 1, source = _db.Ports.First(), destination = _db.Ports.First() };
-            view.packages = new List<Package>()
-            {
-                new Package(){packageID = 0, flight1 = f},
-            };
-
+            view.packages = _db.GetAllPackages();
+            
             return View(view);
         }
 

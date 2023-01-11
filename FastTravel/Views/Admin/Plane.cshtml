@@ -101,9 +101,9 @@
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Plane</p>
                 <p class="col-span-4"></p>
-                <p class="col-span-1 text-white font-bold">Number:</p>
-                <input type="number" placeholder="None" maxlength="4" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
-                <p class="col-span-1 text-white font-bold">Company:</p>
+                <!--p class="col-span-1 text-white font-bold">Number:</!--p>
+                <!--input type="number" placeholder="None" maxlength="4" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
+                <!p class="col-span-1 text-white font-bold">Company:</!p>
                 <input asp-for="newPlane.company" id="companyInput" type="text" value="@Model.newPlane.company" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Seats:</p>
                 <input asp-for="newPlane.seatsNum" id="seatsInput" type="number" value="@Model.newPlane.seatsNum" placeholder="None" maxlength="3" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
