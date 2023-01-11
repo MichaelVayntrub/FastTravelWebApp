@@ -22,7 +22,7 @@
               <p id="FilterText" class="text-white group-hover:text-slate-800 transition-all pr-3 font-bold uppercase">Filter
               </p>
           </button>
-          <div 
+          <form method="post" asp-controller="Admin" asp-action="Flight" 
             class="hidden transition-all absolute z-10 mt-2 origin-top-left divide-y divide-slate-700 rounded-md bg-slate-800 drop-shadow-lg hover:drop-shadow-xl border border-white hover:border-mint"
             id="FilterItems"
             role="menu" 
@@ -67,10 +67,10 @@
               </div>
             </div>
             <div class="py-1" role="none">
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
+              <a href="javascript: resetForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
+              <a href="javascript: submitForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
             </div>
-          </div>
+          </form>
         </div>
         <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">Admin Panel
         </div>
@@ -239,7 +239,14 @@
       $('#datepicker').datetimepicker();
     });
   </script>*@
-
+  <script>
+    function submitForm() {
+        $('#FilterItems').submit();
+    }
+    function resetForm() {
+            FilterItems.reset();
+    }
+  </script>
   <script>
     $("#FilterButton").click(function (event) 
     {

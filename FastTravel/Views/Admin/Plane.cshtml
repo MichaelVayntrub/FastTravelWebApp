@@ -22,7 +22,7 @@
               <p id="FilterText" class="text-white group-hover:text-slate-800 transition-all pr-3 font-bold uppercase">Filter
               </p>
           </button>
-          <div 
+          <form method="post" asp-controller="Admin" asp-action="Plane" 
             class="hidden transition-all absolute z-10 mt-2 origin-top-left divide-y divide-slate-700 rounded-md bg-slate-800 drop-shadow-lg hover:drop-shadow-xl border border-white hover:border-mint"
             id="FilterItems"
             role="menu" 
@@ -33,11 +33,11 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-6 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Company:</p>
-                <input type="text" placeholder="None" class="col-span-5 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.company" type="text" placeholder="None" class="col-span-5 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">Seats Between:</p>
-                <input type="number" maxlength="3" placeholder="Minimum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.minSeats" type="number" maxlength="3" placeholder="Minimum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">And:</p>
-                <input type="number" maxlength="3" placeholder="Maximum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.maxSeats" type="number" maxlength="3" placeholder="Maximum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">Sorting Order:</p>
                 <select class="col-span-5 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
@@ -47,10 +47,10 @@
               </div>
             </div>
             <div class="py-1" role="none">
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
-              <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
+              <a href="javascript: resetForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
+              <a href="javascript: submitForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
             </div>
-          </div>
+          </form>
         </div>
         <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">Admin Panel
         </div>
@@ -73,24 +73,27 @@
     </div>
 
     <div class="flex-1 w-full">
-      <form class="flex h-full w-full" method="post" asp-action="AddPlane">
+      <div class="flex h-full w-full">
         <div class="flex w-2/3">
           <div class="bg-slate-800 flex-1 m-2 border border-white rounded-md">
             <div class="w-full h-full flex flex-col p-4 gap-4">
               <!-- Insert Flights here -->
-              <button class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>Add Plane</p>
-              </button>
+              <form method="get" asp-action="Plane">
+                  <button type="submit" class="h-24 border w-full text-white text-xl px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                    <p>Add Plane</p>
+                  </button>
+              </form>
               @foreach (var item in Model.planes)
               {
-              <button class="h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
-                <p>Plane @item.planeID | @item.company | @item.seatsNum</p>
+              
+              <button id="@item.planeID" type="submit" class="planeButton h-24 pl-6 border w-full text-left text-white text-sm px-2 py-1 border-white rounded-md transition-all bg-slate-800 hover:bg-mint hover:border-none hover:text-slate-800 drop-shadow-lg hover:drop-shadow-xl hover:font-bold active:scale-95">
+                <p>Plane @item.planeID | @item.company | @item.seatsNum </p>
               </button>
               }
             </div>
           </div>
         </div>
-        <div class="flex w-1/3">
+        <form class="flex w-1/3" method="post" asp-action="AddPlane">
           <div class="bg-slate-800 flex-1 flex flex-col m-2">
             <div class="border border-white rounded-md flex flex-col divide-y sticky h-auto top-24">
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
@@ -99,22 +102,22 @@
                 <p class="col-span-1 text-white font-bold">Number:</p>
                 <input type="number" placeholder="None" maxlength="4" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Company:</p>
-                <input asp-for="newPlane.company" type="text" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="newPlane.company" id="companyInput" type="text" value="@Model.newPlane.company" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Seats:</p>
-                <input asp-for="newPlane.seatsNum" type="number" placeholder="None" maxlength="3" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
+                <input asp-for="newPlane.seatsNum" id="seatsInput" type="number" value="@Model.newPlane.seatsNum" placeholder="None" maxlength="3" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
               </div>
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
                 <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
+                <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
                 </button>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
+                <button type="reset" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -133,7 +136,14 @@
       $('#datepicker').datetimepicker();
     });
   </script>*@
-
+  <script>
+    function submitForm() {
+        $('#FilterItems').submit();
+    }
+    function resetForm() {
+        FilterItems.reset();
+    }
+  </script>
   <script>
     $("#FilterButton").click(function (event) 
     {

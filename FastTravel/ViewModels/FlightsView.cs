@@ -8,6 +8,7 @@ namespace FastTravel.ViewModels
         public IEnumerable<Flight> flights { get; set; }
         public IEnumerable<Plane> planes { get; set; }
         public Flight flight { get; set; }
+        public PlaneFilter filter { get; set; }
 
         public FlightsView()
         {
@@ -15,6 +16,7 @@ namespace FastTravel.ViewModels
             flights = new List<Flight>();
             planes = new List<Plane>();
             flight = new Flight();
+            filter = new PlaneFilter();
         }
     }
 }
