@@ -6,6 +6,7 @@ namespace FastTravel.ViewModels
     {
         public Package package { get; set; }
         public Credit credit { get; set; }
+        public int packageID { get; set; }
 
         public int creditID { get; set; }
         public string fullName { get; set; }
@@ -16,8 +17,10 @@ namespace FastTravel.ViewModels
         public int userID { get; set; }
 
         public int flightID { get; set; }
-        public bool saveCredit { get; set; }
+        public int saveCredit { get; set; }
         public bool loadCredit { get; set; }
         public int ticketCount { get; set; }
+
+        public int confirmed { get; set; } = 0;
     }
 }

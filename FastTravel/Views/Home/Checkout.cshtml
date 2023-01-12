@@ -955,6 +955,7 @@
       </div>
     </div>
   </div>
+  <input hidden asp-for="packageID" value=@Model.package.packageID />
   <input id="ticketCount" asp-for="ticketCount" hidden />
   <input id="saveCredit" asp-for="saveCredit" hidden />
   <input asp-for="flightID" value=@Model.package.flight1.flightNumber hidden />
@@ -964,6 +965,10 @@
 {
   <script>
     $(document).ready(function () {
+        if(@Model.confirmed == 1)
+        {
+            $("#modal-wrapper").show();
+        }
       $("#enterName").val(@Model.credit.fullName);
       $("#month").val(@Model.credit.expiredDate);
       $("#year").val(@Model.credit.expiredYear);

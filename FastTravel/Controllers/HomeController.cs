@@ -58,6 +58,10 @@ namespace FastTravel.Controllers
                 {
                     packages = packages.Where(x => x.flight1.adult <= view.filter.maxPrice).ToList();
                 }
+                if (view.filter.directOnly == 1)
+                {
+                    packages = packages.Where(x => x.flight1.stops == 0).ToList();
+                }
                 view.packages = packages;
             }
             else
@@ -75,6 +79,10 @@ namespace FastTravel.Controllers
                 if (view.filter.maxPrice != null)
                 {
                     packages = packages.Where(x => x.flight1.adult <= view.filter.maxPrice).ToList();
+                }
+                if (view.filter.directOnly == 1)
+                {
+                    packages = packages.Where(x => x.flight1.stops == 0 &&  x.flight2.stops == 0).ToList();
                 }
                 view.packages = packages;
             }
@@ -118,8 +126,9 @@ namespace FastTravel.Controllers
             string user = GetUserId();
             string id = _userManager.GetUserId(User);
 
-            int remaining = _db.FlightsData.First(x => x.flightNumber == view.flightID).seatsRemain;
-            if (remaining - view.ticketCount < 0)
+            FlightData flight = _db.FlightsData.First(x => x.flightNumber == view.flightID);
+            int remaining = flight.seatsRemain;
+            if (remaining - view.ticketCount < 0 || flight.dateFrom >= DateTime.Now)
             {
                 return View("Checkout", view);
             }
@@ -131,7 +140,7 @@ namespace FastTravel.Controllers
 
             }
 
-            if (view.saveCredit)
+            if (view.saveCredit == 1)
             {
                 Credit credit = new Credit()
                 {
@@ -144,7 +153,21 @@ namespace FastTravel.Controllers
                 };
                 _db.AddCredit(id, credit);
             }
-            return View("Index", new PackageView() { packages = _db.GetOneWayPackages(user) });
+            CheckoutView checkout = new CheckoutView();
+            checkout.package = _db.GetOneWayPackages(id).ToList()[view.packageID];
+            if (_db.CheckCredit(id))
+            {
+                checkout.credit = _db.GetCredit(id);
+                checkout.loadCredit = true;
+            }
+            else
+            {
+                checkout.credit = new Credit();
+                checkout.loadCredit = false;
+            }
+            checkout.confirmed = 1;
+
+            return View("Checkout", checkout );
         }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -158,48 +181,6 @@ namespace FastTravel.Controllers
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             bool isAdmin = currentUser.IsInRole("Admin");
             return _userManager.GetUserId(User);
-        }
-
-        //private List<Package> GetFilteredPackagesByDestination(PackageView view)
-        //{
-        //    string user = GetUserId();
-        //    var id = _userManager.GetUserId(User);
-        //    List<Package> filteredPackages;
-        //    if(view.ways == 1)
-        //    {
-        //        filteredPackages = _db.GetOneWayPackages(id);
-        //        filteredPackages.Where(p => p.flight1.source.portID == vi)
-        //    }
-
-        //    return filteredPackages;
-
-        //}
-
-        private List<Package> GetFilteredPackagesOneWay(PackageView view)
-        {
-            List<Package> filtered = view.packages.ToList();
-            if(view.filter.minPrice != null)
-            {
-                filtered.Where(p => p.flight1.adult >= view.filter.minPrice);
-            }
-            if (view.filter.maxPrice != null)
-            {
-                filtered.Where(p => p.flight1.adult <= view.filter.maxPrice);
-            }
-            if (view.filter.directOnly)
-            {
-                filtered.Where(p => p.flight1.adult <= view.filter.maxPrice);
-            }
-            if (view.filter.dateSource != null)
-            {
-                //filtered.Where(p => p.flight1.dateFrom >= view.filter.dateSource);
-            }
-            //if (view.filter. != null)
-            //{
-            //    //filtered.Where(p => p.flight1.dateFrom >= view.filter.dateSource);
-            //}
-
-            return filtered;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace FastTravel.ViewModels
         public int destination { get; set; }
         public int? stop1 { get; set; }
         public int? stop2 { get; set; }
-        public PlaneFilter filter { get; set; }
+        public FlightFilter? filter { get; set; }
 
         public int delete { get; set; }
 
@@ -23,7 +23,6 @@ namespace FastTravel.ViewModels
             flights = new List<Flight>();
             planes = new List<Plane>();
             flight = new Flight();
-            filter = new PlaneFilter();
             delete = 0;
         }
     }

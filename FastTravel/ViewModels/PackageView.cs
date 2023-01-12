@@ -11,8 +11,8 @@ namespace FastTravel.ViewModels
         public int ways { get; set; }
         public PackageFilter filter { get; set; }
 
-        public string filterSource { get; set; }
-        public string filterDestination { get; set; }
+        public string filterSource { get; set; } = null;
+        public string filterDestination { get; set; } = null;
 
         public PackageView()
         {
