@@ -72,7 +72,7 @@
             <div class="grid grid-cols-5 py-2 gap-2 items-center">
               <div class="flex items-center col-span-2">
                 <p class="text-white xl:text-lg font-bold">Children (2 - 23) -&nbsp</p>
-                <p id="childCost" class="text-white xl:text-lg font-bold">@Model.package.flight1.child</p>
+                <p id="childCost" class="text-white xl:text-lg font-bold">0</p>
                 <p class="text-white xl:text-lg font-bold">$</p>
               </div>
               <p id="childCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
@@ -866,7 +866,7 @@
                 <p class="col-span-1 text-white font-bold">Credit Number:</p>
                 <input id="enterCredit" asp-for="creditNum" onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                 <p class="col-span-1 text-white font-bold">Expiration Date:</p>
-                <select asp-for="expiredDate" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <select asp-for="expiredDate" id="month" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                     <option value="01">01 - January</option>
                     <option value="02">02 - February</option>
                     <option value="03">03 - March</option>
@@ -880,7 +880,7 @@
                     <option value="11">11 - November</option>
                     <option value="12">12 - December</option>
                 </select>
-                <select asp-for="expiredYear" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <select asp-for="expiredYear" id="year" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
@@ -936,7 +936,7 @@
             </div>
             <div class="flex items-center">
               <!-- Must only show up if payed with credit card -->
-              <input asp-for="saveCredit" id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded accent-emerald-400" />
+              <input id="credSave" name="rem" type="checkbox" class="h-4 w-4 rounded accent-emerald-400" />
               <label for="remember-me" class="ml-2 block leading-tight text-white">Save credit card for future purchaces</label>
             </div>
             <div class="flex items-center">
@@ -948,7 +948,7 @@
               <label for="remember-me" class="ml-2 block leading-tight text-white">I would like to get deals and news from FastTravel on my email</label>
             </div>
             <p class="hidden text-red-500">Some error about payment</p>
-            <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Complete Purchase
+            <button type="submit" id="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Complete Purchase
             </button>
           </div>
         </div>
@@ -956,6 +956,7 @@
     </div>
   </div>
   <input id="ticketCount" asp-for="ticketCount" hidden />
+  <input id="saveCredit" asp-for="saveCredit" hidden />
   <input asp-for="flightID" value=@Model.package.flight1.flightNumber hidden />
 </form>
 
@@ -963,12 +964,20 @@
 {
   <script>
     $(document).ready(function () {
-      $("#enterName").val("");
-      $("#enterCredit").val("");
-      $("#enterCode").val("");
+      $("#enterName").val(@Model.credit.fullName);
+      $("#month").val(@Model.credit.expiredDate);
+      $("#year").val(@Model.credit.expiredYear);
+      $("#enterCredit").val(@Model.credit.creditNum);
+      $("#enterCode").val(@Model.credit.securityCode);
+      $("#childCost").text(@Model.package.flight1.child + @Model.package.flight2.child);
+      $("#adultCost").text(@Model.package.flight1.adult + @Model.package.flight2.adult);
+      $("#elderCost").text(@Model.package.flight1.elder + @Model.package.flight2.elder);
     });
   </script>
   <script>
+    $("#submit").click(function(event) {
+      $("#saveCredit").val($("#credSave").val());
+    });
     $("#addChild").click(function(event) {
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
