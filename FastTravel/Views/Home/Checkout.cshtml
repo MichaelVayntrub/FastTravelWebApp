@@ -901,7 +901,7 @@
       </div>
     </div>
   </div>
-  <input asp-for="ticketCount" id="ticketCount" hidden />
+  <input id="ticketCount" asp-for="ticketCount" id="ticketCount" hidden />
 </form>
 
 @section Scripts
@@ -916,6 +916,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (child <= 9)
       {
         $("#childCount").text(child);
@@ -925,6 +926,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
       }
     });
     $("#removeChild").click(function(event) {
@@ -936,6 +938,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (child >= 0)
       {
         $("#childCount").text(child);
@@ -944,6 +947,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
         if (child == 0 && adult == 0 && elder == 0)
         {
           $("#credit").hide();
@@ -959,6 +963,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (adult <= 9)
       {
         $("#adultCount").text(adult);
@@ -968,6 +973,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
       }
     });
     $("#removeAdult").click(function(event) {
@@ -979,6 +985,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (adult >= 0)
       {
         $("#adultCount").text(adult);
@@ -987,6 +994,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
         if (child == 0 && adult == 0 && elder == 0)
         {
           $("#credit").hide();
@@ -1002,6 +1010,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (elder <= 9)
       {
         $("#elderCount").text(elder);
@@ -1011,6 +1020,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
       }
     });
     $("#removeElder").click(function(event) {
@@ -1022,6 +1032,7 @@
       var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
+      var ticket = child + adult + elder;
       if (elder >= 0)
       {
         $("#elderCount").text(elder);
@@ -1030,6 +1041,7 @@
         $("#prePrice").text(prePrice);
         $("#taxes").text(taxes);
         $("#postPrice").text(postPrice);
+        $("#ticketCount").val(ticket);
         if (child == 0 && adult == 0 && elder == 0)
         {
           $("#credit").hide();

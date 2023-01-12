@@ -124,19 +124,19 @@ namespace FastTravel.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    //Add user role in the registration proccess.
+          //Add user role in the registration proccess.
 
-                    //if (Input.Email == "user@admin.com")
-                    //{
-                    //    await _userManager.AddToRoleAsync(user, "Admin");
-                    //}
-                    //else
-                    //{
-                    //    await _userManager.AddToRoleAsync(user, "User");
-                    //}
+          if (Input.Email == "user@admin.com")
+          {
+            await _userManager.AddToRoleAsync(user, "Admin");
+          }
+          else
+          {
+            await _userManager.AddToRoleAsync(user, "User");
+          }
 
 
-                    var userId = await _userManager.GetUserIdAsync(user);
+          var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
