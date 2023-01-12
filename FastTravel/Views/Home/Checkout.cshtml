@@ -16,113 +16,779 @@
         <div class="bg-slate-800 flex-1 m-2 rounded-md">
           <div class="w-full h-full flex flex-col divide-y p-4 gap-4">
             <div class="grid grid-cols-5 py-2 gap-2 items-center">
-              <p class="text-white xl:text-lg font-bold col-span-2">Children (2 - 23) - XXX$</p>
-              <p class="text-mint text-right xl:text-lg col-span-1">XXXX$</p>
+              <div class="flex items-center col-span-2">
+                <p class="text-white xl:text-lg font-bold">Children (2 - 23) -&nbsp</p>
+                <p id="childCost" class="text-white xl:text-lg font-bold">@Model.flight1.child</p>
+                <p class="text-white xl:text-lg font-bold">$</p>
+              </div>
+              <p id="childCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button id="removeChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
-                <p class="text-mint xl:text-lg pb-1">0</p>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <p id="childCount" class="text-mint xl:text-lg pb-1">0</p>
+                <button id="addChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
-              <p class="text-white xl:text-lg font-bold col-span-2">Adults (24 - 65) - XXX$</p>
-              <p class="text-mint text-right xl:text-lg col-span-1">XXXX$</p>
+              <div class="flex items-center col-span-2">
+                <p class="text-white xl:text-lg font-bold">Adults (24 - 65) -&nbsp</p>
+                <p id="adultCost" class="text-white xl:text-lg font-bold">@Model.flight1.adult</p>
+                <p class="text-white xl:text-lg font-bold">$</p>
+              </div>
+              <p id="adultCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button id="removeAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
-                <p class="text-mint xl:text-lg pb-1">0</p>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <p id="adultCount" class="text-mint xl:text-lg pb-1">0</p>
+                <button id="addAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
-              <p class="text-white xl:text-lg font-bold col-span-2">Elders (66+) - XXX$</p>
-              <p class="text-mint text-right xl:text-lg col-span-1">XXXX$</p>
+              <div class="flex items-center col-span-2">
+                <p class="text-white xl:text-lg font-bold">Elders (66+) -&nbsp</p>
+                <p id="elderCost" class="text-white xl:text-lg font-bold">@Model.flight1.elder</p>
+                <p class="text-white xl:text-lg font-bold">$</p>
+              </div>
+              <p id="elderCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button id="removeElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
-                <p class="text-mint xl:text-lg pb-1">0</p>
-                <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <p id="elderCount" class="text-mint xl:text-lg pb-1">0</p>
+                <button id="addElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
             </div>
-            <div class="grid grid-cols-5 py-2 gap-2 items-center">
-              <p class="col-span-1 text-white font-bold text-lg">Adult</p>
-              <p class="col-span-4"></p>
-              <p class="col-span-1 text-white font-bold">First Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Last Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">ID:</p>
-              <input type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Birth Date:</p>
-              <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-3 text-white font-bold py-3">Gender:</p>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="male" class="accent-mint mt-0.5">
-                <label for="male" class="text-white font-bold">Male</label>
-              </div>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="female" class="accent-mint mt-0.5">
-                <label for="female" class="text-white font-bold">Female</label>
-              </div>
-              <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
-                <p class="text-white font-bold uppercase">Luggage</p>
-                <p class="text-white">Max Weight: 30kg</p>
-              </div>
-            </div>
-            <div class="grid grid-cols-5 py-2 gap-2 items-center">
-              <p class="col-span-1 text-white font-bold text-lg">Child</p>
-              <p class="col-span-4"></p>
-              <p class="col-span-1 text-white font-bold">First Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Last Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">ID:</p>
-              <input type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Birth Date:</p>
-              <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-3 text-white font-bold py-3">Gender:</p>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="male" class="accent-mint mt-0.5">
-                <label for="male" class="text-white font-bold">Male</label>
-              </div>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="female" class="accent-mint mt-0.5">
-                <label for="female" class="text-white font-bold">Female</label>
-              </div>
-              <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
-                <p class="text-white font-bold uppercase">Luggage</p>
-                <p class="text-white">Max Weight: 10kg</p>
+            <div id="adult1" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #1</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)"  type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult1" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult1" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
               </div>
             </div>
-            <div class="grid grid-cols-5 py-2 gap-2 items-center">
-              <p class="col-span-1 text-white font-bold text-lg">Elder</p>
-              <p class="col-span-4"></p>
-              <p class="col-span-1 text-white font-bold">First Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Last Name:</p>
-              <input type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">ID:</p>
-              <input type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Birth Date:</p>
-              <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-3 text-white font-bold py-3">Gender:</p>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="male" class="accent-mint mt-0.5">
-                <label for="male" class="text-white font-bold">Male</label>
+            <div id="adult2" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #2</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult2" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult2" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
               </div>
-              <div class="col-span-1 flex items-center gap-1">
-                <input type="radio" name="gender" value="female" class="accent-mint mt-0.5">
-                <label for="female" class="text-white font-bold">Female</label>
+            </div>
+            <div id="adult3" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #3</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult3" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult3" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
               </div>
-              <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
-                <p class="text-white font-bold uppercase">Luggage</p>
-                <p class="text-white">Max Weight: 20kg</p>
+            </div>
+            <div id="adult4" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #4</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult4" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult4" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="adult5" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #5</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult5" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult5" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="adult6" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #6</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult6" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult6" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="adult7" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #7</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult7" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult7" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="adult8" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #8</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult8" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult8" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="adult9" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Adult #9</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult9" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="adult9" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 30kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child1" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #1</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child1" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child1" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child2" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #2</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child2" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child2" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child3" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #3</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child3" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child3" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child4" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #4</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child4" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child4" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child5" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #5</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child5" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child5" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child6" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #6</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child6" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child6" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child7" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #7</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child7" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child7" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child8" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #8</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child8" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child8" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="child9" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Child #9</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child9" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="child9" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 10kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder1" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #1</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder1" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder1" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder2" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #2</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder2" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder2" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder3" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #3</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder3" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder3" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder4" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #4</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder4" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder4" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder5" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #5</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder5" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder5" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder6" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #6</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder6" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder6" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder7" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #7</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder7" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder7" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder8" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #8</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder8" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder8" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
+              </div>
+            </div>
+            <div id="elder9" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <p class="col-span-1 text-white font-bold text-lg">Elder #9</p>
+                <p class="col-span-4"></p>
+                <p class="col-span-1 text-white font-bold">First Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Last Name:</p>
+                <input onkeydown="return /[a-z]/i.test(event.key)" type="text" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">ID:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" type="text" maxlength="9" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Birth Date:</p>
+                <input type="date" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-3 text-white font-bold py-3">Gender:</p>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder9" value="male" class="accent-mint mt-0.5">
+                  <label for="male" class="text-white font-bold">Male</label>
+                </div>
+                <div class="col-span-1 flex items-center gap-1">
+                  <input type="radio" name="elder9" value="female" class="accent-mint mt-0.5">
+                  <label for="female" class="text-white font-bold">Female</label>
+                </div>
+                <div class="col-span-5 border border-white bg-slate-800 rounded-md flex flex-col px-4 py-2">
+                  <p class="text-white font-bold uppercase">Luggage</p>
+                  <p class="text-white">Max Weight: 20kg</p>
+                </div>
               </div>
             </div>
             <div class="hidden flex-col grid-cols-5 py-4 gap-2 px-8 items-start">
@@ -136,42 +802,44 @@
                 <p class="pl-2 font-bold">Credit Card</p>
               </button>
             </div>
-            <div class="grid grid-cols-5 py-2 gap-2 items-center">
-              <!-- Will only show up if credit card was chosen -->
-              <p class="col-span-5 text-white font-bold text-lg">Credit Card Information</p>
-              <p class="col-span-1 text-white font-bold">Name on Card:</p>
-              <input class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
-              <p class="col-span-1 text-white font-bold">Credit Number:</p>
-              <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-              <p class="col-span-1 text-white font-bold">Expiration Date:</p>
-              <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-                  <option value="01">01 - January</option>
-                  <option value="02">02 - February</option>
-                  <option value="03">03 - March</option>
-                  <option value="04">04 - April</option>
-                  <option value="05">05 - May</option>
-                  <option value="06">06 - June</option>
-                  <option value="07">07 - July</option>
-                  <option value="08">08 - August</option>
-                  <option value="09">09 - September</option>
-                  <option value="10">10 - October</option>
-                  <option value="11">11 - November</option>
-                  <option value="12">12 - December</option>
-              </select>
-              <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
-                  <option value="2020">2020</option>
-                  <option value="2021">2021</option>
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                  <option value="2027">2027</option>
-                  <option value="2028">2028</option>
-                  <option value="2029">2029</option>
-              </select>
-              <p class="col-span-1 text-white font-bold">Security Code:</p>
-              <input maxlength="3" inputmode="numeric" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
+            <div id="credit" class="hidden">
+              <div class="grid grid-cols-5 py-2 gap-2 items-center">
+                <!-- Will only show up if credit card was chosen -->
+                <p class="col-span-5 text-white font-bold text-lg">Credit Card Information</p>
+                <p class="col-span-1 text-white font-bold">Name on Card:</p>
+                <input onkeydown="return /[a-z ]/i.test(event.key)"  class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
+                <p class="col-span-1 text-white font-bold">Credit Number:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <p class="col-span-1 text-white font-bold">Expiration Date:</p>
+                <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                    <option value="01">01 - January</option>
+                    <option value="02">02 - February</option>
+                    <option value="03">03 - March</option>
+                    <option value="04">04 - April</option>
+                    <option value="05">05 - May</option>
+                    <option value="06">06 - June</option>
+                    <option value="07">07 - July</option>
+                    <option value="08">08 - August</option>
+                    <option value="09">09 - September</option>
+                    <option value="10">10 - October</option>
+                    <option value="11">11 - November</option>
+                    <option value="12">12 - December</option>
+                </select>
+                <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                </select>
+                <p class="col-span-1 text-white font-bold">Security Code:</p>
+                <input onkeydown="return /[0-9]/i.test(event.key)" maxlength="3" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
+              </div>
             </div>
           </div>
         </div>
@@ -183,19 +851,31 @@
               <div class="flex flex-col items-center py-4 gap-2">
                 <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="mb-3 drop-shadow-lg rounded-xl w-3/5 aspect-square object-cover pointer-events-none" />
                 <div class="w-3/5">
-                  <p class="text-white xl:text-lg">From: Israel - Tel Aviv</p>
-                  <p class="text-white xl:text-lg">To: Vietnam - Hanoi</p>
-                  <p class="text-white xl:text-lg">Take off: 2023/01/09 13:40</p>
+                  <p class="text-white xl:text-lg">From: @Model.flight1.source.country - @Model.flight1.source.city</p>
+                  <p class="text-white xl:text-lg">To: @Model.flight1.destination.country - @Model.flight1.destination.city</p>
+                  <p class="text-white xl:text-lg">Take off: @Model.flight1.dateFrom</p>
                 </div>
               </div>
 
               <div class="flex flex-col items-center py-4 gap-2">
                 <div class="w-3/5">
-                  <p class="text-white xl:text-lg">Book price per person: XXXX$</p>
-                  <p class="text-white xl:text-lg">Service Fee: XX$</p>
-                  <p class="text-white xl:text-lg">Taxes: XX$</p>
+                  <div class="w-full flex">
+                    <p class="text-white xl:text-lg">Book price:&nbsp</p>
+                    <p id="prePrice" class="text-white xl:text-lg">0</p>
+                    <p class="text-white xl:text-lg">$</p>
+                  </div>
+                  <p class="text-white xl:text-lg">Service Fee: 35$</p>
+                  <div class="w-full flex">
+                    <p class="text-white xl:text-lg">Taxes:&nbsp</p>
+                    <p id="taxes" class="text-white xl:text-lg">0</p>
+                    <p class="text-white xl:text-lg">$</p>
+                  </div>
                   <br>
-                  <p class="text-white font-bold xl:text-lg">Total Price: XXXX$</p>
+                  <div class="w-full flex">
+                    <p class="text-white font-bold xl:text-lg">Total Price:&nbsp</p>
+                    <p id="postPrice" class="text-white font-bold xl:text-lg">0</p>
+                    <p class="text-white font-bold xl:text-lg">$</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,3 +901,138 @@
     </div>
   </div>
 </div>
+
+@section Scripts
+{
+  <script>
+    $("#addChild").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var childCost = @Model.flight1.child;
+      child = child + 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (child <= 9)
+      {
+        $("#childCount").text(child);
+        $("#childCostSum").text((child * childCost) + "$");
+        $("#child"+child).show();
+        $("#credit").show();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+      }
+    });
+    $("#removeChild").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var childCost = @Model.flight1.child;
+      child = child - 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (child >= 0)
+      {
+        $("#childCount").text(child);
+        $("#childCostSum").text((childCost * child) + "$");
+        $("#child"+(child + 1)).hide();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+        if (child == 0 && adult == 0 && elder == 0)
+        {
+          $("#credit").hide();
+        }
+      }
+    });
+    $("#addAdult").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var adultCost = @Model.flight1.adult;
+      adult = adult + 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (adult <= 9)
+      {
+        $("#adultCount").text(adult);
+        $("#adultCostSum").text((adult * adultCost) + "$");
+        $("#adult"+adult).show();
+        $("#credit").show();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+      }
+    });
+    $("#removeAdult").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var adultCost = @Model.flight1.adult;
+      adult = adult - 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (adult >= 0)
+      {
+        $("#adultCount").text(adult);
+        $("#adultCostSum").text((adult * adultCost) + "$");
+        $("#adult"+(adult + 1)).hide();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+        if (child == 0 && adult == 0 && elder == 0)
+        {
+          $("#credit").hide();
+        }
+      }
+    });
+    $("#addElder").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var elderCost = @Model.flight1.elder;
+      elder = elder + 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (elder <= 9)
+      {
+        $("#elderCount").text(elder);
+        $("#elderCostSum").text((elder * elderCost) + "$");
+        $("#elder"+elder).show();
+        $("#credit").show();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+      }
+    });
+    $("#removeElder").click(function(event) {
+      var child = parseInt($("#childCount").text().trim(), 10);
+      var adult = parseInt($("#adultCount").text().trim(), 10);
+      var elder = parseInt($("#elderCount").text().trim(), 10);
+      var elderCost = @Model.flight1.elder;
+      elder = elder - 1;
+      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var taxes = (prePrice * 10) / 100;
+      var postPrice = prePrice + taxes + 35;
+      if (elder >= 0)
+      {
+        $("#elderCount").text(elder);
+        $("#elderCostSum").text((elder * elderCost) + "$");
+        $("#elder"+(elder + 1)).hide();
+        $("#prePrice").text(prePrice);
+        $("#taxes").text(taxes);
+        $("#postPrice").text(postPrice);
+        if (child == 0 && adult == 0 && elder == 0)
+        {
+          $("#credit").hide();
+        }
+      }
+    });
+  </script>
+}
