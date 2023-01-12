@@ -64,7 +64,7 @@ namespace FastTravel.Controllers
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             bool isAdmin = currentUser.IsInRole("Admin");
             var id = _userManager.GetUserId(User);
-            return View(_db.GetAllPackages(id).ToList()[view.chosenPackage]);
+            return View(_db.GetOneWayPackages(id).ToList()[view.chosenPackage]);
         }
         public IActionResult Privacy()
         {

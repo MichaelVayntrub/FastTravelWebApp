@@ -1,5 +1,4 @@
-﻿@model FastTravel.ViewModels.PackageView
-@using FastTravel.Areas.Identity.Data;
+﻿@using FastTravel.Areas.Identity.Data;
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
@@ -27,36 +26,7 @@
             </svg>
         </button>
       </form>
-      <div class="relative flex-1 p-2 flex items-center justify-center lg:absolute sm:inset-0 gap-2"> <!-- search main container -->
-        <div class="w-full lg:w-1/2 2xl:w-1/3">
-          <label for="search" class="sr-only">Search</label>
-          <div class="relative">
-            <div class="group/main transition-all focus-within:bg-mint focus-within:border-mint focus-within:drop-shadow-xl focus-within:  justify-between drop-shadow-lg hover:drop-shadow-xl hover: border border-white hover:border-mint bg-slate-800 hover:bg-mint items-center w-full flex rounded-full p-1"> <!-- background -->
-              <input id="search" name="search" class="block transition-colors group-focus-within/main:placeholder-slate-800 group-focus-within/main:text-slate-800 group-focus-within/main:bg-mint focus:group-focus-within/main:placeholder-mint border-none focus:ring-0 w-full font-bold uppercase rounded-full py-0 pl-4 text-mint group-hover/main:text-slate-800 placeholder-white group-hover/main:placeholder-slate-800 bg-slate-800 group-hover/main:bg-mint leading-tight focus:outline-none text-sm group-hover/main:focus:placeholder-opacity-0 focus:placeholder-opacity-0" type="text" placeholder="From"> <!-- input1 -->
-              <svg class="w-10 h-10 rotate-0 group-hover/main:rotate-90 group-focus-within/main:rotate-90 text-white group-focus-within/main:text-slate-800 group-hover/main:text-slate-800 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path fill-rule="evenodd" d="M2 11H22V13H2V11Z" clip-rule="evenodd" />
-              </svg>
-              <input id="search" name="search" class="block transition-colors group-focus-within/main:placeholder-slate-800 group-focus-within/main:text-slate-800 group-focus-within/main:bg-mint focus:group-focus-within/main:placeholder-mint border-none focus:ring-0 w-full font-bold uppercase rounded-full py-0 pl-4 text-mint group-hover/main:text-slate-800 placeholder-white group-hover/main:placeholder-slate-800 bg-slate-800 group-hover/main:bg-mint leading-tight focus:outline-none text-sm group-hover/main:focus:placeholder-opacity-0 focus:placeholder-opacity-0" type="text" placeholder="To"> <!-- input2 -->
-              <div class="group/search p-1.5 bg-mint hover:bg-white cursor-pointer mx-1.5 rounded-full transition-all active:scale-110">
-                <svg class="w-5 h-5 text-slate-800 group-hover/search:text-slate-800 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <form method="post" asp-controller="Home" asp-action="Index">
-        @if(Model.ways == 1){
-            <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">One-Way</button>
-            <input asp-for=ways value="2" id="wayIn" hidden/>
-        }
-        else
-        {
-            <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">Two-Way</button>
-            <input asp-for=ways value="1" id="wayIn" hidden/>
-        }
-        </form>
-      </div>
+      
       <div class="flex items-center">
         <div class="hidden relative sm:inline-block items-center justify-center gap-2"> <!-- user menu container -->
           <button 
