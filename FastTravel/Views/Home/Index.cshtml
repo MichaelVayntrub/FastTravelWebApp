@@ -1,4 +1,8 @@
 ﻿@model FastTravel.ViewModels.PackageView
+@using FastTravel.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "Home Page";
@@ -97,11 +101,19 @@
                                     <p>0</p>
                                 </div>
                                 <div class="flex items-center">
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
                                     <form method="post" asp-action="Checkout">
                                         <input asp-for="chosenPackage" hidden value="@Model.chosenPackage">
                                         <button type="submit" class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
                                         </button>
                                     </form>
+                                    }
+                                    else
+                                    {
+                                      <a asp-area="Identity" asp-page="/Account/Login" class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
+                                      </a>
+                                    }
                                 </div>
                             </div>
                         </div>
