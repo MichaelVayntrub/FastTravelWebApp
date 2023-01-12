@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div 
+<form method="get" asp-action="Index" 
   data-controller="modal"
   id="modal-wrapper"
   class="relative z-10 hidden"
@@ -55,7 +55,7 @@
       </div>
     </div>
   </div>
-</div>
+</form>
 
 <form method="post" asp-action="Confirm" class="flex flex-col flex-1 px-2 sm:px-6 lg:px-10 xl:px-20">
   <div class="flex-none w-full h-20">
