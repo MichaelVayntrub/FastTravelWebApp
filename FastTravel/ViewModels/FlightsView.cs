@@ -15,6 +15,8 @@ namespace FastTravel.ViewModels
         public int? stop2 { get; set; }
         public PlaneFilter filter { get; set; }
 
+        public int delete { get; set; }
+
         public FlightsView()
         {
             ports = new List<Port>();
@@ -22,6 +24,7 @@ namespace FastTravel.ViewModels
             planes = new List<Plane>();
             flight = new Flight();
             filter = new PlaneFilter();
+            delete = 0;
         }
     }
 }

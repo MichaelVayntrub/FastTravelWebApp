@@ -27,7 +27,7 @@ namespace FastTravel.Models
         [ForeignKey("Order")]
         public int orderID { get; set; }
 
-        [Required]
-        public TicketType ticketType { get; set; }
+        //[Required]
+        //public TicketType ticketType { get; set; }
     }
 }

@@ -38,12 +38,6 @@
                 <input asp-for="filter.minSeats" type="number" maxlength="3" placeholder="Minimum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">And:</p>
                 <input asp-for="filter.maxSeats" type="number" maxlength="3" placeholder="Maximum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
-                <p class="text-white text-sm col-span-1">Sorting Order:</p>
-                <select class="col-span-5 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
-                  <option value="" class="">None</option>
-                  <option value="Something" class="">Something 1</option>
-                  <option value="Something2" class="">Something 2</option>
-                </select>
               </div>
             </div>
             <div class="py-1" role="none">
@@ -101,8 +95,6 @@
               <div class="grid grid-cols-5 p-4 gap-2 items-center">
                 <p class="col-span-1 text-white font-bold text-lg uppercase">Plane</p>
                 <p class="col-span-4"></p>
-                <!--p class="col-span-1 text-white font-bold">Number:</!--p>
-                <!--input type="number" placeholder="None" maxlength="4" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm"-->
                 <!p class="col-span-1 text-white font-bold">Company:</!p>
                 <input asp-for="newPlane.company" id="companyInput" type="text" value="@Model.newPlane.company" placeholder="None" class="px-4 py-3 col-span-4 w-full text-white font-bold transition-all rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 outline-none focus:outline-none text-sm">
                 <p class="col-span-1 text-white font-bold">Seats:</p>
@@ -111,9 +103,11 @@
 
               <div class="grid grid-cols-2 p-4 gap-2 items-center">
                 <p class="hidden col-span-2 text-red-500 text-center font-bold">Some Error Message</p>
-                <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
+                <input id="applyIn" asp-for="chosenPlane" hidden value = "@Model.chosenPlane">
+                <input id="deleteIn" asp-for="delete" hidden value = "@Model.delete">
+                <button id="applyBtn" type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Apply
                 </button>
-                <button type="reset" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
+                <button id="deleteBtn" type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Remove
                 </button>
               </div>
             </div>
@@ -145,6 +139,14 @@
     function resetForm() {
         FilterItems.reset();
     }
+    $("#applyBtn").click(function (event) 
+    {
+        $("#applyIn").val(0);
+    });
+    $("#deleteBtn").click(function (event) 
+    {
+        $("#deleteIn").val(1);
+    });
   </script>
   <script>
     $("#FilterButton").click(function (event) 

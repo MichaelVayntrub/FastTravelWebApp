@@ -35,7 +35,7 @@
                 <p class="text-white text-sm col-span-1">Destination:</p>
                 <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
                   <option value="" class="">None</option>
-                  <!-- For Michael: this is where the ports should show up -->
+                  <!--this is where the ports should show up -->
                   @foreach (var item in Model.ports)
                   {
                     <option value="@item" class="">@item.name (@item.country, @item.city)</option>
@@ -58,12 +58,6 @@
                     <label for="floatingInput" class="sr-only">Select a date</label>
                   </div>
                 </div>
-                <p class="text-white text-sm col-span-1">Sorting Order:</p>
-                <select class="col-span-3 px-4 py-3 w-full font-bold text-white transition-all drop-shadow-lg hover:drop-shadow-xl rounded-md border border-white bg-slate-800 focus:ring-0 text-sm hover:text-mint focus:text-mint hover:border-mint focus:border-mint">
-                  <option value="" class="">None</option>
-                  <option value="Something" class="">Something 1</option>
-                  <option value="Something2" class="">Something 2</option>
-                </select>
               </div>
             </div>
             <div class="py-1" role="none">

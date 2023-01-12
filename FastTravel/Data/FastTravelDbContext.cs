@@ -203,7 +203,12 @@ namespace FastTravel.Data
 
             foreach (Flight flight in flights)
             {
-                packages.Add(new Package() { flight1 = flight, packageID = count++ });
+                packages.Add(new Package() { 
+                    packageID = count++,
+                    //image = ???
+                    flight1 = flight,
+                    //flight2 = flight,
+                });
             }
             return packages;
         }

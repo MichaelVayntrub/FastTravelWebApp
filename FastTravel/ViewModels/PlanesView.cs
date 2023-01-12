@@ -8,6 +8,7 @@ namespace FastTravel.ViewModels
         public Plane newPlane { get; set; }
         public PlaneFilter filter { get; set; }
         public int chosenPlane { get; set; }
+        public int delete { get; set; }
 
         public PlanesView()
         {
@@ -15,6 +16,7 @@ namespace FastTravel.ViewModels
             this.newPlane = new Plane() { planeID = 0, company = "", seatsNum = 0};
             this.filter = new PlaneFilter();
             chosenPlane = -1;
+            delete = 0;
         }
     }
 }
