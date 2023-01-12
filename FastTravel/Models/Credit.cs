@@ -1,13 +1,28 @@
-﻿namespace FastTravel.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FastTravel.Models
 {
     public class Credit
     {
+        [Key]
         public int creditID { get; set; }
+
+        [Required]
         public int fullName { get; set; }
+
+        [Required]
         public int creditNum { get; set; }
+
+        [Required]
         public string expiredDate { get; set; }
+
+        [Required]
         public int expiredYear { get; set; }
-        public int securityCode { get; set; }   
-        public int userID { get; set; }   
+
+        [Required]
+        public int securityCode { get; set; }
+
+        [Required]
+        public string userID { get; set; }   
     }
 }

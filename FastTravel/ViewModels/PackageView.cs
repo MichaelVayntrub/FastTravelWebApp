@@ -9,6 +9,7 @@ namespace FastTravel.ViewModels
         public Package curr { get; set; }
         public int chosenPackage { get; set; }
         public int ways { get; set; }
+        public PackageFilter filter { get; set; }
 
         public PackageView()
         {
@@ -16,6 +17,7 @@ namespace FastTravel.ViewModels
             curr = new Package();
             chosenPackage = -1;
             ways = 1;
+            filter = new PackageFilter();
         }
     }
 }

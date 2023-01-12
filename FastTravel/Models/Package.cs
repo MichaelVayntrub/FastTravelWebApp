@@ -21,5 +21,6 @@ namespace FastTravel.Models
         public string userID { get; set; }
 
         public bool twoWay { get; set; }
+        public int stops { get; set; }
     }
 }

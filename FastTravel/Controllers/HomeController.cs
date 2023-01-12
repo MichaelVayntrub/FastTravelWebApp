@@ -61,21 +61,23 @@ namespace FastTravel.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Checkout(PackageView view)
         {
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            bool isAdmin = currentUser.IsInRole("Admin");
+            CheckoutView checkout = new CheckoutView();
+            string user = GetUserId();
             var id = _userManager.GetUserId(User);
-            return View(_db.GetOneWayPackages(id).ToList()[view.chosenPackage]);
+            checkout.package = _db.GetOneWayPackages(id).ToList()[view.chosenPackage];
+            return View(checkout);
         }
-        public IActionResult AboutUs()
+        public IActionResult Privacy()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Confirm()
+        public IActionResult Confirm(CheckoutView view)
         {
 
+            return View("Index");
         }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -89,6 +91,29 @@ namespace FastTravel.Controllers
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             bool isAdmin = currentUser.IsInRole("Admin");
             return _userManager.GetUserId(User);
+        }
+
+        private List<Package> GetFilteredPackagesOneWay(PackageView view)
+        {
+            List<Package> filtered = view.packages.ToList();
+            if(view.filter.minPrice != null)
+            {
+                filtered.Where(p => p.flight1.adult >= view.filter.minPrice);
+            }
+            if (view.filter.maxPrice != null)
+            {
+                filtered.Where(p => p.flight1.adult <= view.filter.maxPrice);
+            }
+            if (view.filter.directOnly)
+            {
+                filtered.Where(p => p.flight1.adult <= view.filter.maxPrice);
+            }
+            if (view.filter.dateSource != null)
+            {
+                filtered.Where(p => p.flight1.adult <= view.filter.maxPrice);
+            }
+
+            return filtered;
         }
     }
 }

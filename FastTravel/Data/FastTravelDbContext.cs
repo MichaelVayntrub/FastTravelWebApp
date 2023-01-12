@@ -10,8 +10,8 @@ namespace FastTravel.Data
     {
         public DbSet<Port> Ports { get; set; }
         public DbSet<Plane> Planes { get; set; }
-        //public List<Flight> Flights { get; set; }
         public DbSet<FlightData> FlightsData { get; set; }
+        public DbSet<Credit> Credits { get; set; }
 
         //public DbSet<Luggage> Luggages { get; set; }
 
@@ -116,6 +116,27 @@ namespace FastTravel.Data
             return ConvertDataToFlight(FlightsData.First(f => f.flightNumber == id), ports, planes);
         }
 
+        public void AddCredit(string id, Credit credit)
+        {
+            var credits = Credits.Where(u => u.userID == id);
+
+            if (Credits.Where(u => u.userID == id).Count() == 0)
+            {
+                Credits.Add(credit);
+            }
+            else
+            {
+                Credits.RemoveRange(credits);
+                Credits.Add(credit);
+            }
+            SaveChanges();
+        }
+
+        public Credit GetCredit(string id)
+        {
+            return Credits.First(c => c.userID == id);
+        }
+
         public List<Flight> GetFlights()
         {
             List<Port> ports = Ports.ToList();
@@ -195,11 +216,7 @@ namespace FastTravel.Data
             return data;
         }
 
-        public List<Package> GetAllPackages(string user)
-        {
-            return GetTwoWayPackages(user).ToList();
-        }
-
+        
         public List<Package> GetOneWayPackages(string user)
         {
             List<Flight> flights = GetFlights();
