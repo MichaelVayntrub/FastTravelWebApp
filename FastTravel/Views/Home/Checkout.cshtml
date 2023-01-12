@@ -862,9 +862,9 @@
                 <!-- Will only show up if credit card was chosen -->
                 <p class="col-span-5 text-white font-bold text-lg">Credit Card Information</p>
                 <p class="col-span-1 text-white font-bold">Name on Card:</p>
-                <input asp-for="fullName" onkeydown="return /[a-z ]/i.test(event.key)"  class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
+                <input id="enterName" asp-for="fullName" onkeydown="return /[a-z ]/i.test(event.key)"  class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
                 <p class="col-span-1 text-white font-bold">Credit Number:</p>
-                <input asp-for="creditNum" onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <input id="enterCredit" asp-for="creditNum" onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                 <p class="col-span-1 text-white font-bold">Expiration Date:</p>
                 <select asp-for="expiredDate" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                     <option value="01">01 - January</option>
@@ -893,7 +893,7 @@
                     <option value="2029">2029</option>
                 </select>
                 <p class="col-span-1 text-white font-bold">Security Code:</p>
-                <input asp-for="securityCode" onkeydown="return /[0-9]/i.test(event.key)" maxlength="3" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
+                <input id="enterCode" asp-for="securityCode" onkeydown="return /[0-9]/i.test(event.key)" maxlength="3" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
               </div>
             </div>
           </div>
@@ -960,6 +960,13 @@
 
 @section Scripts
 {
+  <script>
+    $(document).ready(function () {
+      $("#enterName").val("");
+      $("#enterCredit").val("");
+      $("#enterCode").val("");
+    });
+  </script>
   <script>
     $("#addChild").click(function(event) {
       var child = parseInt($("#childCount").text().trim(), 10);
