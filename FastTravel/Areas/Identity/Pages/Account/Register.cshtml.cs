@@ -126,14 +126,14 @@ namespace FastTravel.Areas.Identity.Pages.Account
 
                     //Add user role in the registration proccess.
 
-                    if (Input.Email == "user@admin.com")
-                    {
-                        await _userManager.AddToRoleAsync(user, "Admin");
-                    }
-                    else
-                    {
-                        await _userManager.AddToRoleAsync(user, "User");
-                    }
+                    //if (Input.Email == "user@admin.com")
+                    //{
+                    //    await _userManager.AddToRoleAsync(user, "Admin");
+                    //}
+                    //else
+                    //{
+                    //    await _userManager.AddToRoleAsync(user, "User");
+                    //}
 
 
                     var userId = await _userManager.GetUserIdAsync(user);

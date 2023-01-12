@@ -66,7 +66,7 @@ namespace FastTravel.Controllers
             var id = _userManager.GetUserId(User);
             return View(_db.GetOneWayPackages(id).ToList()[view.chosenPackage]);
         }
-        public IActionResult Privacy()
+        public IActionResult AboutUs()
         {
             return View();
         }
