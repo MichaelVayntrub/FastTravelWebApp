@@ -1,4 +1,5 @@
-﻿@using FastTravel.Areas.Identity.Data;
+﻿@model FastTravel.ViewModels.PackageView
+@using FastTravel.Areas.Identity.Data;
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
@@ -44,7 +45,17 @@
             </div>
           </div>
         </div>
-        <button type="button" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">One-Way</button>
+        <form method="post" asp-controller="Home" asp-action="Index">
+        @if(Model.ways == 1){
+            <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">One-Way</button>
+            <input asp-for=ways value="2" id="wayIn" hidden/>
+        }
+        else
+        {
+            <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">Two-Way</button>
+            <input asp-for=ways value="1" id="wayIn" hidden/>
+        }
+        </form>
       </div>
       <div class="flex items-center">
         <div class="hidden relative sm:inline-block items-center justify-center gap-2"> <!-- user menu container -->

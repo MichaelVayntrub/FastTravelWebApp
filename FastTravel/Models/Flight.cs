@@ -29,8 +29,8 @@ namespace FastTravel.Models
 
         public Plane plane { get; set; }
 
-        public float child { get; set; }
-        public float adult { get; set; }
-        public float elder { get; set; }
+        public float child { get; set; } = 0;
+        public float adult { get; set; } = 0;
+        public float elder { get; set; } = 0;
     }
 }

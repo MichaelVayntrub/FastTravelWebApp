@@ -168,7 +168,7 @@
           </div>
         </div>
       </div>
-      <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">One-Way Flights
+      <div id="divHead" class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">One-Way Flights
       </div>
       <div class="w-28 hidden sm:block">
       </div>
@@ -182,6 +182,7 @@
           <li class="relative">
               <button type="submit" class="packageButton group block w-full aspect-square overflow-hidden drop-shadow-lg transition-all hover:drop-shadow-xl hover:scale-105 active:scale-90">
               <input hidden asp-for="chosenPackage" value="@item.packageID">
+              <input hidden asp-for="ways" value=@Model.ways>
               <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="rounded-xl w-full aspect-square object-cover pointer-events-none" />
               <span class="sr-only">View details</span>
             </button>
@@ -200,6 +201,10 @@
 {
   <script>
       $(document).ready(function () {
+        if(@Model.ways == 2)
+        {
+           $("#divHead").text("Two-Way Flights");
+        }
         if(@Model.chosenPackage != -1)
         {
           $("#modal-wrapper").show();

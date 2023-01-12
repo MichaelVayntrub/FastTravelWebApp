@@ -8,12 +8,14 @@ namespace FastTravel.ViewModels
         public IEnumerable<Package> packages { get; set; }
         public Package curr { get; set; }
         public int chosenPackage { get; set; }
+        public int ways { get; set; }
 
         public PackageView()
         {
             packages = new List<Package>();
             curr = new Package();
             chosenPackage = -1;
+            ways = 1;
         }
     }
 }

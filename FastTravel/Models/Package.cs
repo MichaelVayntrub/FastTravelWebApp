@@ -15,9 +15,11 @@ namespace FastTravel.Models
         public Flight flight1 { get; set; }
 
         [ForeignKey("flightNumber")]
-        public Flight? flight2 { get; set; }
+        public Flight flight2 { get; set; }
 
         [ForeignKey("userID")]
-        public int userID { get; set; }
+        public string userID { get; set; }
+
+        public bool twoWay { get; set; }
     }
 }

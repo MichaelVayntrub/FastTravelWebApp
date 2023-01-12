@@ -195,7 +195,12 @@ namespace FastTravel.Data
             return data;
         }
 
-        public List<Package> GetAllPackages()
+        public List<Package> GetAllPackages(string user)
+        {
+            return GetTwoWayPackages(user).ToList();
+        }
+
+        public List<Package> GetOneWayPackages(string user)
         {
             List<Flight> flights = GetFlights();
             List<Package> packages = new List<Package>();
@@ -203,12 +208,41 @@ namespace FastTravel.Data
 
             foreach (Flight flight in flights)
             {
-                packages.Add(new Package() { 
+                packages.Add(new Package()
+                {
                     packageID = count++,
                     //image = ???
                     flight1 = flight,
-                    //flight2 = flight,
+                    flight2 = new Flight(),
+                    userID = user,
+                    twoWay = false
                 });
+            }
+            return packages;
+        }
+        public List<Package> GetTwoWayPackages(string user)
+        {
+            List<Flight> flights = GetFlights();
+            List<Package> packages = new List<Package>();
+            int count = 0;
+
+            foreach (Flight flight1 in flights)
+            {
+                foreach (Flight flight2 in flights.Where(f2 => f2.flightNumber != flight1.flightNumber
+                && f2.source.portID == flight1.destination.portID 
+                && f2.source.portID == flight1.destination.portID
+                && f2.dateFrom > flight1.dateTo))
+                {
+                    packages.Add(new Package()
+                    {
+                        packageID = count++,
+                        //image = ???
+                        flight1 = flight1,
+                        flight2 = flight2,
+                        userID = user,
+                        twoWay = true
+                    });
+                }
             }
             return packages;
         }

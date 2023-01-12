@@ -1,4 +1,5 @@
 ﻿using FastTravel.Areas.Identity.Data;
+using FastTravel.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

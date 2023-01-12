@@ -118,7 +118,7 @@
                   <option value="" class="">None</option>
                   @foreach (var item in Model.planes)
                   {
-                    <option value="@item.planeID" class="">@item.planeID | @item.company, @item.seatsNum)</option>
+                    <option value="@item.planeID" class="">@item.planeID - @item.company, @item.seatsNum</option>
                   }
                 </select>
                 <p class="col-span-1 text-white font-bold">From:</p>
