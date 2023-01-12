@@ -976,7 +976,7 @@
   </script>
   <script>
     $("#submit").click(function(event) {
-      $("#saveCredit").val($("#credSave").val());
+      $("#saveCredit").val($("#credSave").is(":checked"));
     });
     $("#addChild").click(function(event) {
       var child = parseInt($("#childCount").text().trim(), 10);
