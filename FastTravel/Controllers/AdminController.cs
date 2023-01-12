@@ -16,6 +16,7 @@ namespace FastTravel.Controllers
             _db = db;
         }
 
+        [Authorize(Policy = "requireAdmin")]
         public IActionResult Flight()
         {
             FlightsView flightsView = new FlightsView();

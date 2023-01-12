@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations.FastTravel
 {
     [DbContext(typeof(FastTravelContext))]
-    [Migration("20230105201339_addedUsers")]
-    partial class addedUsers
+    [Migration("20230112095431_initIdentity")]
+    partial class initIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

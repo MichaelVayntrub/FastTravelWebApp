@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using FastTravel.Controllers;
 
 namespace FastTravel.Areas.Identity.Pages.Account
 {
@@ -124,16 +125,16 @@ namespace FastTravel.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     //Add user role in the registration proccess.
-                    /*
-                    if(Input.Role == null)
+
+                    if (Input.Email == "user@admin.com")
                     {
-                        await _userManager.AddToRoleAsync(user, "User");
+                        await _userManager.AddToRoleAsync(user, "Admin");
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user, Input.Role);
+                        await _userManager.AddToRoleAsync(user, "User");
                     }
-                    */
+
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

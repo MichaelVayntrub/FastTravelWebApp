@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using FastTravel.Areas.Identity.Data;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,11 @@ builder.Services.AddDbContext<FastTravelDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<FastTravelContext>();
 
 builder.Services.AddControllersWithViews();
+AddAutorizationPolicies(builder.Services);
 
 var app = builder.Build();
 
@@ -49,3 +52,17 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+
+void AddAutorizationPolicies(IServiceCollection services)
+{
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("adminOnly", policy => policy.RequireClaim("adminNum"));
+    });
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("requireAdmin", policy => policy.RequireRole("Admin"));
+        options.AddPolicy("requireUser", policy => policy.RequireRole("User"));
+    });
+}

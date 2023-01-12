@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FastTravel.Migrations.FastTravel
 {
     /// <inheritdoc />
-    public partial class addedUsers : Migration
+    public partial class initIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -194,6 +194,11 @@ namespace FastTravel.Migrations.FastTravel
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.Sql(@$"INSERT INTO [dbo].[AspNetRoles] ([Id],[Name],[NormalizedName],[ConcurrencyStamp])
+            VALUES ('Admin', 'Admin', 'ADMIN', null);");
+            migrationBuilder.Sql(@$"INSERT INTO [dbo].[AspNetRoles] ([Id],[Name],[NormalizedName],[ConcurrencyStamp])
+            VALUES ('User', 'User', 'USER', null);");
         }
 
         /// <inheritdoc />
