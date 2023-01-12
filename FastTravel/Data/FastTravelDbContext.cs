@@ -118,15 +118,13 @@ namespace FastTravel.Data
 
         public void AddCredit(string id, Credit credit)
         {
-            var credits = Credits.Where(u => u.userID == id);
-
-            if (Credits.Where(u => u.userID == id).Count() == 0)
+            if (Credits.FirstOrDefault(u => u.userID == id) == null)
             {
                 Credits.Add(credit);
             }
             else
             {
-                Credits.RemoveRange(credits);
+                Credits.Remove(Credits.First(u => u.userID == id));
                 Credits.Add(credit);
             }
             SaveChanges();

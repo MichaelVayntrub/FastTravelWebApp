@@ -5,11 +5,7 @@
         public float? minPrice { get; set; }
         public float? maxPrice { get; set; }
         public bool directOnly { get; set; }
-        public DateOnly? dateSource { get; set; }
+        public DateTime dateSource { get; set; }
         public bool? sortingOrder { get; set; }
-
-        public string source { get; set; }
-        public string destination { get; set; }
-
     }
 }

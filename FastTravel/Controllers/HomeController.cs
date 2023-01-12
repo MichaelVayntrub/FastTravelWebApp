@@ -49,6 +49,15 @@ namespace FastTravel.Controllers
                     packages = packages.Where(x => x.flight1.source.country == view.filterSource).ToList();
                 if (view.filterDestination != null)
                     packages = packages.Where(x => x.flight1.destination.country == view.filterDestination).ToList();
+                packages = packages.Where(x => x.flight1.dateFrom >= view.filter.dateSource).ToList();
+                if (view.filter.minPrice != null)
+                {
+                    packages = packages.Where(x => x.flight1.adult >= view.filter.minPrice).ToList();
+                }
+                if (view.filter.maxPrice != null)
+                {
+                    packages = packages.Where(x => x.flight1.adult <= view.filter.maxPrice).ToList();
+                }
                 view.packages = packages;
             }
             else
@@ -58,6 +67,15 @@ namespace FastTravel.Controllers
                     packages = packages.Where(x => x.flight1.source.country.Equals(view.filterSource)).ToList();
                 if (view.filterDestination != null)
                     packages = packages.Where(x => x.flight1.destination.country.Equals(view.filterDestination)).ToList();
+                packages = packages.Where(x => x.flight1.dateFrom >= view.filter.dateSource).ToList();
+                if (view.filter.minPrice != null)
+                {
+                    packages = packages.Where(x => x.flight1.adult >= view.filter.minPrice).ToList();
+                }
+                if (view.filter.maxPrice != null)
+                {
+                    packages = packages.Where(x => x.flight1.adult <= view.filter.maxPrice).ToList();
+                }
                 view.packages = packages;
             }
             
@@ -98,7 +116,7 @@ namespace FastTravel.Controllers
         public IActionResult Confirm(CheckoutView view)
         {
             string user = GetUserId();
-            var id = _userManager.GetUserId(User);
+            string id = _userManager.GetUserId(User);
 
             int remaining = _db.FlightsData.First(x => x.flightNumber == view.flightID).seatsRemain;
             if (remaining - view.ticketCount < 0)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations
 {
     [DbContext(typeof(FastTravelDbContext))]
-    [Migration("20230112174700_changedCredit")]
-    partial class changedCredit
+    [Migration("20230112200937_addTables")]
+    partial class addTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FastTravel.Migrations
 {
     /// <inheritdoc />
-    public partial class addedTables : Migration
+    public partial class addTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace FastTravel.Migrations
                 {
                     creditID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    fullName = table.Column<int>(type: "int", nullable: false),
+                    fullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     creditNum = table.Column<int>(type: "int", nullable: false),
                     expiredDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     expiredYear = table.Column<int>(type: "int", nullable: false),
