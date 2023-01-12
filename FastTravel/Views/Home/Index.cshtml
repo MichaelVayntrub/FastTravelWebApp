@@ -1,8 +1,4 @@
 ﻿@model FastTravel.ViewModels.PackageView
-@using FastTravel.Areas.Identity.Data;
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "Home Page";
@@ -101,19 +97,11 @@
                                     <p>@Model.curr.flight1.stops</p>
                                 </div>
                                 <div class="flex items-center">
-                                    @if (SignInManager.IsSignedIn(User))
-                                    {
                                     <form method="post" asp-action="Checkout">
                                         <input asp-for="chosenPackage" hidden value="@Model.chosenPackage">
                                         <button type="submit" class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
                                         </button>
                                     </form>
-                                    }
-                                    else
-                                    {
-                                      <a asp-area="Identity" asp-page="/Account/Login" class="bg-slate-800 rounded-full font-bold text-white uppercase py-2 px-6 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Proceed
-                                      </a>
-                                    }
                                 </div>
                             </div>
                         </div>
@@ -208,9 +196,9 @@
               <span class="sr-only">View details</span>
             </button>
             <p class="pointer-events-none mt-2 font-bold leading-tight sm:text-lg block truncate text-mint">@item.flight1.source.country - @item.flight1.destination.country</p>
-            <p class="pointer-events-none block text-sm font-medium text-white">27/12/2022 13:30</p>
-            <p class="pointer-events-none block text-sm font-medium text-white">26 Seats left</p>
-            <p class="pointer-events-none mt-1 block text-sm font-bold text-white">1,299.99$</p>
+            <p class="pointer-events-none block text-sm font-medium text-white">@item.flight1.dateTo</p>
+            <p class="pointer-events-none block text-sm font-medium text-white">@item.flight1.seatsRemain Seats left</p>
+            <p class="pointer-events-none mt-1 block text-sm font-bold text-white">@item.flight1.adult$</p>
           </li>
       </form>
       }

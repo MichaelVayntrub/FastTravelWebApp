@@ -42,21 +42,25 @@ namespace FastTravel.Controllers
         public IActionResult Index(PackageView view)
         {
             string user = GetUserId();
-            if(view.ways == 1)
+            if(view.ways == 2)
             {
-                List<Package> packages = _db.GetOneWayPackages(user);
-                if (view.filter.source != null)
-                    packages = packages.Where(x => x.flight1.source.country == view.filter.source).ToList();
-                if (view.filter.destination != null)
-                    packages = packages.Where(x => x.flight1.destination.country == view.filter.destination).ToList();
+                List<Package> packages = _db.GetTwoWayPackages(user);
+                if (view.filterSource != null)
+                    packages = packages.Where(x => x.flight1.source.country == view.filterSource).ToList();
+                if (view.filterDestination != null)
+                    packages = packages.Where(x => x.flight1.destination.country == view.filterDestination).ToList();
                 view.packages = packages;
             }
             else
             {
-                view.packages = _db.GetTwoWayPackages(user);
+                List<Package> packages = _db.GetOneWayPackages(user);
+                if (view.filterSource != null)
+                    packages = packages.Where(x => x.flight1.source.country.Equals(view.filterSource)).ToList();
+                if (view.filterDestination != null)
+                    packages = packages.Where(x => x.flight1.destination.country.Equals(view.filterDestination)).ToList();
+                view.packages = packages;
             }
             
-
             if (view.chosenPackage != -1)
             {
                 view.curr = view.packages.ToList()[view.chosenPackage];
