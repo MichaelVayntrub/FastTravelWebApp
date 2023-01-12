@@ -1,9 +1,9 @@
-﻿@model Package
+﻿@model FastTravel.ViewModels.CheckoutView
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="flex flex-col flex-1 px-2 sm:px-6 lg:px-10 xl:px-20">
+<form method="post" asp-action="Confirm" class="flex flex-col flex-1 px-2 sm:px-6 lg:px-10 xl:px-20">
   <div class="flex-none w-full h-20">
     <div class="flex justify-center items-center w-full h-full">
       <div class="font-bold leading-tight uppercase text-3xl text-mint drop-shadow-lg">Checkout
@@ -18,46 +18,46 @@
             <div class="grid grid-cols-5 py-2 gap-2 items-center">
               <div class="flex items-center col-span-2">
                 <p class="text-white xl:text-lg font-bold">Children (2 - 23) -&nbsp</p>
-                <p id="childCost" class="text-white xl:text-lg font-bold">@Model.flight1.child</p>
+                <p id="childCost" class="text-white xl:text-lg font-bold">@Model.package.flight1.child</p>
                 <p class="text-white xl:text-lg font-bold">$</p>
               </div>
               <p id="childCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button id="removeChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="removeChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
                 <p id="childCount" class="text-mint xl:text-lg pb-1">0</p>
-                <button id="addChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="addChild" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
               <div class="flex items-center col-span-2">
                 <p class="text-white xl:text-lg font-bold">Adults (24 - 65) -&nbsp</p>
-                <p id="adultCost" class="text-white xl:text-lg font-bold">@Model.flight1.adult</p>
+                <p id="adultCost" class="text-white xl:text-lg font-bold">@Model.package.flight1.adult</p>
                 <p class="text-white xl:text-lg font-bold">$</p>
               </div>
               <p id="adultCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button id="removeAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="removeAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
                 <p id="adultCount" class="text-mint xl:text-lg pb-1">0</p>
-                <button id="addAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="addAdult" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
               <div class="flex items-center col-span-2">
                 <p class="text-white xl:text-lg font-bold">Elders (66+) -&nbsp</p>
-                <p id="elderCost" class="text-white xl:text-lg font-bold">@Model.flight1.elder</p>
+                <p id="elderCost" class="text-white xl:text-lg font-bold">@Model.package.flight1.elder</p>
                 <p class="text-white xl:text-lg font-bold">$</p>
               </div>
               <p id="elderCostSum" class="text-mint text-right xl:text-lg col-span-1">0$</p>
               <div class="col-span-2 gap-4 flex items-center justify-center">
-                <button id="removeElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="removeElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
                 </button>
                 <p id="elderCount" class="text-mint xl:text-lg pb-1">0</p>
-                <button id="addElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
+                <button type="button" id="addElder" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase p-0.5 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
                 </button>
               </div>
@@ -802,16 +802,17 @@
                 <p class="pl-2 font-bold">Credit Card</p>
               </button>
             </div>
+            <!--form method="post" asp-action=""-->
             <div id="credit" class="hidden">
               <div class="grid grid-cols-5 py-2 gap-2 items-center">
                 <!-- Will only show up if credit card was chosen -->
                 <p class="col-span-5 text-white font-bold text-lg">Credit Card Information</p>
                 <p class="col-span-1 text-white font-bold">Name on Card:</p>
-                <input onkeydown="return /[a-z ]/i.test(event.key)"  class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
+                <input asp-for="fullName" onkeydown="return /[a-z ]/i.test(event.key)"  class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="John Smith" type="text"/>
                 <p class="col-span-1 text-white font-bold">Credit Number:</p>
-                <input onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <input asp-for="creditNum" onkeydown="return /[0-9]/i.test(event.key)"  id="ccn" type="tel" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx" class="px-4 py-3 col-span-4 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                 <p class="col-span-1 text-white font-bold">Expiration Date:</p>
-                <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <select asp-for="expiredDate" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                     <option value="01">01 - January</option>
                     <option value="02">02 - February</option>
                     <option value="03">03 - March</option>
@@ -825,7 +826,7 @@
                     <option value="11">11 - November</option>
                     <option value="12">12 - December</option>
                 </select>
-                <select class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
+                <select asp-for="expiredYear" class="px-4 py-3 col-span-2 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl">
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
@@ -838,7 +839,7 @@
                     <option value="2029">2029</option>
                 </select>
                 <p class="col-span-1 text-white font-bold">Security Code:</p>
-                <input onkeydown="return /[0-9]/i.test(event.key)" maxlength="3" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
+                <input asp-for="securityCode" onkeydown="return /[0-9]/i.test(event.key)" maxlength="3" class="px-4 py-3 col-span-1 w-full font-bold transition-all rounded-md text-white placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl" placeholder="000" type="text"/>
               </div>
             </div>
           </div>
@@ -851,9 +852,9 @@
               <div class="flex flex-col items-center py-4 gap-2">
                 <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="mb-3 drop-shadow-lg rounded-xl w-3/5 aspect-square object-cover pointer-events-none" />
                 <div class="w-3/5">
-                  <p class="text-white xl:text-lg">From: @Model.flight1.source.country - @Model.flight1.source.city</p>
-                  <p class="text-white xl:text-lg">To: @Model.flight1.destination.country - @Model.flight1.destination.city</p>
-                  <p class="text-white xl:text-lg">Take off: @Model.flight1.dateFrom</p>
+                  <p class="text-white xl:text-lg">From: @Model.package.flight1.source.country - @Model.package.flight1.source.city</p>
+                  <p class="text-white xl:text-lg">To: @Model.package.flight1.destination.country - @Model.package.flight1.destination.city</p>
+                  <p class="text-white xl:text-lg">Take off: @Model.package.flight1.dateFrom</p>
                 </div>
               </div>
 
@@ -893,14 +894,15 @@
               <label for="remember-me" class="ml-2 block leading-tight text-white">I would like to get deals and news from FastTravel on my email</label>
             </div>
             <p class="hidden text-red-500">Some error about payment</p>
-            <button class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Complete Purchase
+            <button type="submit" class="bg-slate-800 mx-2 rounded-full font-bold text-white uppercase py-2 transition-all hover:drop-shadow-xl hover:bg-mint hover:text-slate-800 hover:scale-105 active:scale-90">Complete Purchase
             </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <input asp-for="ticketCount" id="ticketCount" hidden />
+</form>
 
 @section Scripts
 {
@@ -909,9 +911,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var childCost = @Model.flight1.child;
+      var childCost = @Model.package.flight1.child;
       child = child + 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (child <= 9)
@@ -929,9 +931,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var childCost = @Model.flight1.child;
+      var childCost = @Model.package.flight1.child;
       child = child - 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (child >= 0)
@@ -952,9 +954,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var adultCost = @Model.flight1.adult;
+      var adultCost = @Model.package.flight1.adult;
       adult = adult + 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (adult <= 9)
@@ -972,9 +974,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var adultCost = @Model.flight1.adult;
+      var adultCost = @Model.package.flight1.adult;
       adult = adult - 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (adult >= 0)
@@ -995,9 +997,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var elderCost = @Model.flight1.elder;
+      var elderCost = @Model.package.flight1.elder;
       elder = elder + 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (elder <= 9)
@@ -1015,9 +1017,9 @@
       var child = parseInt($("#childCount").text().trim(), 10);
       var adult = parseInt($("#adultCount").text().trim(), 10);
       var elder = parseInt($("#elderCount").text().trim(), 10);
-      var elderCost = @Model.flight1.elder;
+      var elderCost = @Model.package.flight1.elder;
       elder = elder - 1;
-      var prePrice = (child * @Model.flight1.child) + (adult * @Model.flight1.adult) + (elder * @Model.flight1.elder);
+      var prePrice = (child * @Model.package.flight1.child) + (adult * @Model.package.flight1.adult) + (elder * @Model.package.flight1.elder);
       var taxes = (prePrice * 10) / 100;
       var postPrice = prePrice + taxes + 35;
       if (elder >= 0)

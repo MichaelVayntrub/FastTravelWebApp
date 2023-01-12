@@ -33,7 +33,7 @@
             <div class="p-4" role="none">
               <div class="grid grid-cols-6 gap-4 items-center">
                 <p class="text-white text-sm col-span-1">Company:</p>
-                <input asp-for="filter.company" type="text" placeholder="None" class="col-span-5 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
+                <input asp-for="filter.company" onkeydown="return /[a-z ]/i.test(event.key)" type="text" placeholder="None" class="col-span-5 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">Seats Between:</p>
                 <input asp-for="filter.minSeats" type="number" maxlength="3" placeholder="Minimum Seats" class="col-span-2 px-4 py-3 w-full text-white font-bold transition-all drop-shadow-lg hover:drop-shadow-xl focus:drop-shadow-xl rounded-md placeholder-white bg-slate-800 border border-white hover:border-mint hover:text-mint hover:placeholder-mint focus:border-mint focus:text-mint focus:placeholder-mint focus:ring-0 text-sm outline-none focus:outline-none">
                 <p class="text-white text-sm col-span-1">And:</p>
