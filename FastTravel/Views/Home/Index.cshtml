@@ -146,6 +146,7 @@
               <p class="text-white text-sm col-span-1">Direct Flights Only:</p>
               <div class="flex justify-start col-span-5 py-3">
                 <input class="h-4 w-4 rounded accent-[#00FF90]" type="checkbox" value="" id="direct">
+                <input id="directFlight" asp-for="filter.directOnly" hidden />
               </div>
               <p class="text-white text-sm col-span-1">Date:</p>
               <div class="col-span-5 flex items-center flex-1 justify-center">
@@ -174,8 +175,8 @@
             </div>
           </div>
           <div class="py-1" role="none">
-            <a href="javascript: resetForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Reset</a>
-            <a href="javascript: submitForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Apply</a>
+            <a href="javascript: resetForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menuReset">Reset</a>
+            <a href="javascript: submitForm();" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menuApply">Apply</a>
           </div>
         </form>
       </div>
@@ -236,6 +237,16 @@
     });
   </script>
   <script>
+    $("#menuApply").click(function (event) {
+      if ($("#direct").is(":checked"))
+      {
+        $("#directFlight").val(1);
+      }
+      else
+      {
+        $("#directFlight").val(0);
+      }
+    });
     $("#FilterButton").click(function (event) 
     {
       if(!$("#FilterItems").is(":visible"))
