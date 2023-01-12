@@ -936,7 +936,7 @@
             </div>
             <div class="flex items-center">
               <!-- Must only show up if payed with credit card -->
-              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded accent-emerald-400" />
+              <input asp-for="saveCredit" id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded accent-emerald-400" />
               <label for="remember-me" class="ml-2 block leading-tight text-white">Save credit card for future purchaces</label>
             </div>
             <div class="flex items-center">
@@ -955,7 +955,8 @@
       </div>
     </div>
   </div>
-  <input id="ticketCount" asp-for="ticketCount" id="ticketCount" hidden />
+  <input id="ticketCount" asp-for="ticketCount" hidden />
+  <input asp-for="flightID" value=@Model.package.flight1.flightNumber hidden />
 </form>
 
 @section Scripts

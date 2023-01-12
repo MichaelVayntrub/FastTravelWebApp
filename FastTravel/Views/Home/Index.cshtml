@@ -34,7 +34,7 @@
                             <img src="https://a0.muscache.com/im/pictures/dc77b547-0d65-438e-8946-c10fc355866d.jpg?im_w=720" class="mb-3 drop-shadow-lg rounded-xl w-full aspect-square object-cover pointer-events-none" />
                             <p class="text-white xl:text-lg">To: @Model.curr.flight1.destination.country - @Model.curr.flight1.destination.city</p>
                             <p class="text-white xl:text-lg">Take off: @Model.curr.flight1.dateFrom</p>
-                            <p class="text-white xl:text-lg">Available Seats: @Model.curr.flight1.plane.seatsNum</p>
+                            <p class="text-white xl:text-lg">Available Seats: @Model.curr.flight1.seatsRemain</p>
                             <p class="text-white xl:text-lg">Child Price: @Model.curr.flight1.child$</p>
                             <p class="text-white xl:text-lg">Adult Price: @Model.curr.flight1.adult$</p>
                             <p class="text-white xl:text-lg">Elder Price: @Model.curr.flight1.elder$</p>
@@ -98,7 +98,7 @@
                             <div class="flex-none flex justify-between items-center font-bold leading-tight text-xl text-white">
                                 <div class="flex">
                                     <p>Stops:&nbsp</p>
-                                    <p>0</p>
+                                    <p>@Model.curr.flight1.stops</p>
                                 </div>
                                 <div class="flex items-center">
                                     @if (SignInManager.IsSignedIn(User))

@@ -4,6 +4,7 @@ using FastTravel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations
 {
     [DbContext(typeof(FastTravelDbContext))]
-    partial class FastTravelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230112165502_addedTables")]
+    partial class addedTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,9 +101,8 @@ namespace FastTravel.Migrations
                     b.Property<int>("expiredYear")
                         .HasColumnType("int");
 
-                    b.Property<string>("fullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("fullName")
+                        .HasColumnType("int");
 
                     b.Property<int>("securityCode")
                         .HasColumnType("int");

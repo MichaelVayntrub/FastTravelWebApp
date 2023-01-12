@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastTravel.Migrations
 {
     [DbContext(typeof(FastTravelDbContext))]
-    [Migration("20230111181243_addedPorts")]
-    partial class addedPorts
+    [Migration("20230112174700_changedCredit")]
+    partial class changedCredit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,12 @@ namespace FastTravel.Migrations
                     b.Property<int>("plane")
                         .HasColumnType("int");
 
+                    b.Property<int>("seatsRemain")
+                        .HasColumnType("int");
+
+                    b.Property<int>("seatsUsed")
+                        .HasColumnType("int");
+
                     b.Property<int>("source")
                         .HasColumnType("int");
 
@@ -69,9 +75,46 @@ namespace FastTravel.Migrations
                     b.Property<int?>("stop2")
                         .HasColumnType("int");
 
+                    b.Property<int>("stops")
+                        .HasColumnType("int");
+
                     b.HasKey("flightNumber");
 
                     b.ToTable("FlightsData");
+                });
+
+            modelBuilder.Entity("FastTravel.Models.Credit", b =>
+                {
+                    b.Property<int>("creditID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("creditID"));
+
+                    b.Property<int>("creditNum")
+                        .HasColumnType("int");
+
+                    b.Property<string>("expiredDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("expiredYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("fullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("securityCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("creditID");
+
+                    b.ToTable("Credits");
                 });
 
             modelBuilder.Entity("FastTravel.Models.Plane", b =>

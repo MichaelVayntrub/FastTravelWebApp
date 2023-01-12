@@ -8,7 +8,7 @@ namespace FastTravel.Models
         public int creditID { get; set; }
 
         [Required]
-        public int fullName { get; set; }
+        public string fullName { get; set; }
 
         [Required]
         public int creditNum { get; set; }

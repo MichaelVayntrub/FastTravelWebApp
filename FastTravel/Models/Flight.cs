@@ -12,11 +12,13 @@ namespace FastTravel.Models
         [Required]
         public Port source { get; set; }
 
+        [Required]
         public DateTime dateFrom { get; set; }
 
         [Required]
         public Port destination { get; set; }
 
+        [Required]
         public DateTime dateTo { get; set; }
 
         public Port? stop1 { get; set; }
@@ -27,10 +29,19 @@ namespace FastTravel.Models
 
         public DateTime? date2 { get; set; }
 
+        [Required]
         public Plane plane { get; set; }
-
+        [Required]
         public float child { get; set; } = 0;
+        [Required]
         public float adult { get; set; } = 0;
+        [Required]
         public float elder { get; set; } = 0;
+        [Required]
+        public int stops { get; set; } = 0;
+        [Required]
+        public int seatsRemain { get; set; } = 0;
+        [Required]
+        public int seatsUsed { get; set; } = 0;
     }
 }

@@ -132,6 +132,11 @@ namespace FastTravel.Data
             SaveChanges();
         }
 
+        public bool CheckCredit(string id)
+        {
+            return Credits.FirstOrDefault(c => c.userID == id) != null;
+        }
+
         public Credit GetCredit(string id)
         {
             return Credits.First(c => c.userID == id);
@@ -178,7 +183,10 @@ namespace FastTravel.Data
                 plane = planes.Where(p => p.planeID == data.plane).First(),
                 child = data.child,
                 adult = data.adult,
-                elder = data.elder
+                elder = data.elder,
+                stops = data.stops,
+                seatsRemain = data.seatsRemain,
+                seatsUsed = data.seatsUsed
             };
             return flight;
         }
@@ -186,16 +194,21 @@ namespace FastTravel.Data
         {
             int? dstop1 = null, dstop2 = null;
             DateTime? ddate1 = null, ddate2 = null;
+            int dstops = 0;
             if (flight.stop1 != null)
             {
                 dstop1 = flight.stop1.portID;
                 ddate1 = flight.date1;
+                dstops = 1;
+
             }
             if (flight.stop2 != null)
             {
                 dstop2 = flight.stop2.portID;
                 ddate2 = flight.date2;
+                dstops = 2;
             }
+            
             
             FlightData data = new FlightData()
             {
@@ -211,7 +224,10 @@ namespace FastTravel.Data
                 plane = flight.plane.planeID,
                 child = flight.child,
                 adult = flight.adult,
-                elder = flight.elder
+                elder = flight.elder,
+                stops = dstops,
+                seatsRemain = flight.plane.seatsNum,
+                seatsUsed = 0,
             };
             return data;
         }

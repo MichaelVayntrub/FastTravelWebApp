@@ -6,11 +6,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FastTravel.Migrations
 {
     /// <inheritdoc />
-    public partial class addedPorts : Migration
+    public partial class addedTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Credits",
+                columns: table => new
+                {
+                    creditID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    fullName = table.Column<int>(type: "int", nullable: false),
+                    creditNum = table.Column<int>(type: "int", nullable: false),
+                    expiredDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    expiredYear = table.Column<int>(type: "int", nullable: false),
+                    securityCode = table.Column<int>(type: "int", nullable: false),
+                    userID = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Credits", x => x.creditID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "FlightsData",
                 columns: table => new
@@ -28,7 +46,10 @@ namespace FastTravel.Migrations
                     plane = table.Column<int>(type: "int", nullable: false),
                     child = table.Column<float>(type: "real", nullable: false),
                     adult = table.Column<float>(type: "real", nullable: false),
-                    elder = table.Column<float>(type: "real", nullable: false)
+                    elder = table.Column<float>(type: "real", nullable: false),
+                    stops = table.Column<int>(type: "int", nullable: false),
+                    seatsRemain = table.Column<int>(type: "int", nullable: false),
+                    seatsUsed = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,6 +89,9 @@ namespace FastTravel.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Credits");
+
             migrationBuilder.DropTable(
                 name: "FlightsData");
 

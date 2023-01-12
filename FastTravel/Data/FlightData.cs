@@ -37,5 +37,12 @@ namespace FastTravel.Data
 
         [Required]
         public float elder { get; set; }
+
+        [Required]
+        public int stops { get; set; }
+        [Required]
+        public int seatsRemain { get; set; }
+        [Required]
+        public int seatsUsed { get; set; }
     }
 }
