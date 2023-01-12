@@ -91,14 +91,9 @@
               {
                 <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
                 <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Login">Log In</a>
-                <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-controller="Admin" asp-action="Flight">Admin Panel</a>
               }
             </div>
             <div class="py-1" role="none">
-              @if (SignInManager.IsSignedIn(User))
-              {
-                <a href="Admin/Flight" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Admin Panel</a>        
-              }
               <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold">About Us</a>
             </div>
           </div>

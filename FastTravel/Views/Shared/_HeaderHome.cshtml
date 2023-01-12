@@ -54,12 +54,12 @@
                 <form method="post" asp-controller="Home" asp-action="Index">
                     @if (Model.ways == 1)
                     {
-                        <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">One-Way</button>
+                        <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">Two-Way</button>
                         <input asp-for=ways value="2" id="wayIn" hidden />
                     }
                     else
                     {
-                        <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">Two-Way</button>
+                        <button id="wayBtn" type="submit" class="flex hover:scale-105 active:scale-90 transition-all flex-none items-center relative p-3 rounded-full text-white bg-slate-800 hover:bg-mint hover:text-slate-800 hover:drop-shadow-xl hover: text-sm font-bold uppercase">One-Way</button>
                         <input asp-for=ways value="1" id="wayIn" hidden />
                     }
                 </form>
@@ -122,14 +122,9 @@
                             {
                                 <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
                                 <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-area="Identity" asp-page="/Account/Login">Log In</a>
-                                <a class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover:text-slate-800 hover:text-lg hover:font-bold cursor-pointer" asp-controller="Admin" asp-action="Flight">Admin Panel</a>
                             }
                         </div>
                         <div class="py-1" role="none">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a href="Admin/Flight" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2">Admin Panel</a>
-                            }
                             <a href="#" class="text-white block px-4 py-2 text-sm transition-all hover:bg-mint hover:drop-shadow-lg hover: hover:text-slate-800 hover:text-lg hover:font-bold">About Us</a>
                         </div>
                     </div>
